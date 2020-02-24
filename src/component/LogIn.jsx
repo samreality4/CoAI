@@ -7,7 +7,7 @@ function LogIn() {
       <div className="container mt-5">
         <h1>Login</h1>
         <div className="row">
-          <div className="col-md-4 center">
+          <div className="col-lg-4 col-md-6 center">
             <div className="card shadow-lg p-3 mb-5 bg-white rounded">
               <div className="card-body">
                 <form action="/login" method="POST">
@@ -23,7 +23,7 @@ function LogIn() {
                       name="password"
                     />
                   </div>
-                  <button type="submit" class="btn btn-dark">
+                  <button type="submit" className="btn btn-dark">
                     Login
                   </button>
                 </form>

@@ -1,4 +1,15 @@
 .center {
-margin: auto;
-
+  margin: auto;
 }
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Montserrat";
+}
+
+p {
+  font-family: "Courier Prime";
+}
+
