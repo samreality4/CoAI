@@ -1,8 +1,10 @@
 import React from "react";
+import { Zoom, Fab } from '@material-ui/core';
 
 function LogIn() {
   return (
-    <div className="mt-5 text-center" >
+    
+<div className="mt-5 text-center" >
       <h1> Welcome! Sign in to get started!</h1>
       <div className="container mt-5">
         <h1>Login</h1>
@@ -23,9 +25,14 @@ function LogIn() {
                       name="password"
                     />
                   </div>
-                  <button type="submit" className="btn btn-dark">
+                  <Zoom in={true}>
+                  <Fab type="submit" className="btn btn-dark">
                     Login
-                  </button>
+                  </Fab>
+
+                  </Zoom>
+                 
+
                 </form>
               </div>
             </div>
@@ -33,6 +40,9 @@ function LogIn() {
         </div>
       </div>
     </div>
+
+  
+    
   );
 }
 

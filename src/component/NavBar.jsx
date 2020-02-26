@@ -10,13 +10,9 @@ function NavBar () {
     <Navbar.Brand href="#home">CoAI</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
-      <Nav className="mr-auto">
-        <Nav.Link href="#features">Features</Nav.Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
-      </Nav>
-      <Nav>
+      <Nav className="ml-auto">
         <Nav.Link href="#deets">Log In</Nav.Link>
-        <Nav.Link href="#memes">
+        <Nav.Link  href="#memes">
           About Me
         </Nav.Link>
       </Nav>
