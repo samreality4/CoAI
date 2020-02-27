@@ -4,7 +4,7 @@ import { Zoom, Fab } from '@material-ui/core';
 function LogIn() {
   return (
     
-<div className="mt-5 text-center" >
+<div className="mt-5 text-center mx-auto" >
       <h1> Welcome! Sign in to get started!</h1>
       <div className="container mt-5">
         <h1>Login</h1>

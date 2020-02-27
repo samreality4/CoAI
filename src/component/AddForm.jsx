@@ -4,7 +4,7 @@ import { Fab } from "@material-ui/core";
 
 function AddForm() {
   return (
-    <Modal show={true} size="lg">
+    <Modal show={false} size="lg">
       <Modal.Header closeButton>
         <Modal.Title className="Header">Add a new entry</Modal.Title>
       </Modal.Header>
