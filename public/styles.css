@@ -15,5 +15,8 @@ p, text, textarea, label, ::placeholder, .option, button {
     bottom:0;
     width: 100;
     height: 60px;
-    background-color: black;
+    background-color:#393e46;
+}
+body {
+    background-image: url('../images/cubes.png');
 }

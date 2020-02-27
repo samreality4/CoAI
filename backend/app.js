@@ -29,6 +29,7 @@ const userSchema = new mongoose.Schema({
 });
 
 const Code = mongoose.model("Code", codeSchema);
+const User = mongoose.model("User", userSchema);
 
 app.get("/", (req, res) =>{
   Code.find({}, function(err, codes) {

@@ -2,6 +2,8 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import OneCard from "./OneCard"
 import { useState } from "react";
+import { Grow } from '@material-ui/core';
+
 
 function Cards () {
 
@@ -9,10 +11,14 @@ function Cards () {
     
     
 
-return list.map(item => {
+return <Grow>
+{list.map(item => {
+
 
     // <OneCard/>
-})
+})}
+</Grow>
+
 
 }
 

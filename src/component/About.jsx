@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap";
 import { Zoom } from "@material-ui/core";
 
 function About() {

@@ -2,19 +2,22 @@ import React from "react";
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import {Link} from "react-router-dom";
+import { Button } from '@material-ui/core';
 
 
 
 function NavBar () {
 
+
     return <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
-    <Navbar.Brand href="#home">CoAI</Navbar.Brand>
+    <Navbar.Brand href="">CoAI</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="ml-auto">
-     <Link to="/login" className="nav-link" >Log In</Link> 
+     <Link to="/login" className="nav-link" ><Button variant="contained" color="primary">Log In</Button></Link> 
+     <Link to="/register" className="nav-link" ><Button variant="contained" color="secondary">Register</Button></Link> 
         <Link  className="nav-link" to="/about">
-          About Me
+        <Button variant="contained" color="info">About Me</Button>
         </Link>
       </Nav>
     </Navbar.Collapse>

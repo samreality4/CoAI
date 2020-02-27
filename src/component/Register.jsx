@@ -3,13 +3,13 @@ import { Zoom, Fab } from '@material-ui/core';
 import {Form} from "react-bootstrap";
 import Card from "react-bootstrap/Card"
 
-function LogIn() {
+function Register() {
   return (
     
 <div className="mt-5 text-center" >
-      <h1> Welcome! Sign in to get started!</h1>
+      <h1> Welcome! Register Today!</h1>
       <div className="container mt-5">
-        <h1>Login</h1>
+        <h1>Register</h1>
         <div className="row">
           <div className="col-lg-4 col-md-6 mx-auto">
             <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
@@ -27,8 +27,16 @@ function LogIn() {
                       name="password"
                     />
               </Form.Group>
+              <Form.Group>
+                    <label for="password">Confirm Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      name="password"
+                    />
+              </Form.Group>
                   <Zoom in={true}>
-                  <Fab color="primary" type="submit">
+                  <Fab color="secondary" type="submit">
                     Login
                   </Fab>
 
@@ -48,4 +56,4 @@ function LogIn() {
   );
 }
 
-export default LogIn;
+export default Register;
