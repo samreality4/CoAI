@@ -4,12 +4,12 @@ import { Zoom, Fab } from '@material-ui/core';
 function LogIn() {
   return (
     
-<div className="mt-5 text-center mx-auto" >
+<div className="mt-5 text-center" >
       <h1> Welcome! Sign in to get started!</h1>
       <div className="container mt-5">
         <h1>Login</h1>
         <div className="row">
-          <div className="col-lg-4 col-md-6 center">
+          <div className="col-lg-4 col-md-6 mx-auto">
             <div className="card shadow-lg p-3 mb-5 bg-white rounded">
               <div className="card-body">
                 <form action="/login" method="POST">
@@ -26,7 +26,7 @@ function LogIn() {
                     />
                   </div>
                   <Zoom in={true}>
-                  <Fab type="submit" className="btn btn-dark">
+                  <Fab type="submit">
                     Login
                   </Fab>
 
