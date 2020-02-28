@@ -14,10 +14,11 @@ function NavBar () {
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="ml-auto">
-     <Link to="/login" className="nav-link" ><Button variant="contained" color="primary">Log In</Button></Link> 
-     <Link to="/register" className="nav-link" ><Button variant="contained" color="secondary">Register</Button></Link> 
+     <Link hidden = {false} to="/login" className="nav-link" ><Button variant="contained" color="primary">Log In</Button></Link> 
+     <Link hidden = {false}to="/register" className="nav-link" ><Button variant="contained" color="secondary">Register</Button></Link> 
+     <Link hidden = {true}to="/logout" className="nav-link" ><Button variant="contained" color="secondary">logout</Button></Link> 
         <Link  className="nav-link" to="/about">
-        <Button variant="contained" color="info">About Me</Button>
+        <Button variant="contained">About Me</Button>
         </Link>
       </Nav>
     </Navbar.Collapse>

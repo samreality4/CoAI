@@ -3,14 +3,19 @@ import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
 import { Zoom, Fab } from "@material-ui/core";
 import { Form, Col } from "react-bootstrap";
-import Cards from "./Cards";
 import AddForm from "./AddForm";
+import { useState } from "react";
+import Cards from "./Cards";
 
 function Search() {
   function getList() {}
 
-  function add() {
-    return true
+  const [click, setClickState] = useState(false);
+
+
+
+  function add(value) {
+  
   }
 
   return (
@@ -56,16 +61,18 @@ function Search() {
           </div>
         </div>
       </Zoom>
-      <div>{/* <Cards /> */}</div>
+     <Cards />
       <Zoom in={true}>
         <Fab
+        onClick={add}
         color="primary"
           style={{ position: "fixed", bottom: "50px", right: "50px" }}
-          onClick={<AddForm slick={true}/>}
+        
         >
           <AddIcon />
         </Fab>
-      </Zoom>/>
+      </Zoom>
+    />
     </div>
   );
 }

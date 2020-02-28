@@ -7,8 +7,15 @@ import axios from "axios";
 function AddForm(props) {
 
     //TODO need to change the state when Fab is click in parent
-  const [clickState, setClickState] = useState(true);
+   
+    console.log(props.clickstate);
+  const [clickState, setClickState] = useState(false);
 
+  if(props.clickstate===true){
+
+    setClickState(true);
+  } 
+  
   const [form, setForm] = useState({
     question: String,
     keyword: String,
@@ -36,13 +43,12 @@ function AddForm(props) {
 
   }
 
-
   function onClick() {
     setClickState(false);
   }
 
   return (
-    <Modal show={true} size="lg">
+    <Modal show={clickState} size="lg">
       <Modal.Header closeButton>
         <Modal.Title className="Header">Add a new entry</Modal.Title>
       </Modal.Header>

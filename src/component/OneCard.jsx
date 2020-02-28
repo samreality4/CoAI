@@ -3,11 +3,18 @@ import Card from "react-bootstrap/Card";
 
 function OneCard(props) {
   return (
-    <Card className="shadow" bg="light" text="black" style={{ width: "18rem" }}>
-      <Card.Header as="h5">Javascript</Card.Header>
+    <Card
+      className="shadow m-3"
+      bg="light"
+      text="black"
+      style={{ width: "18rem" }}
+    >
+      <Card.Header as="h5">{props.language}</Card.Header>
       <Card.Body>
-        <Card.Text>What was the question?</Card.Text>
-        <Card.Text><a href="https://github.com/samreality4/CoAI">https://github.com/samreality4/CoAI</a></Card.Text>
+        <Card.Text>{props.question}</Card.Text>
+        <Card.Text>
+          <a href={props.projecturl}>{props.projecturl}</a>
+        </Card.Text>
       </Card.Body>
     </Card>
   );

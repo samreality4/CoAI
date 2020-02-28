@@ -4,7 +4,6 @@ import LogIn from "./LogIn";
 import Footer from "./Footer";
 import Search from "./Search";
 import AddForm from "./AddForm";
-import OneCard from "./OneCard";
 import Register from "./Register";
 import About from "./About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -23,7 +22,7 @@ function App() {
               <div>
                 <AddForm />
 
-                <Search />
+                
               </div>
             )}
           />
@@ -55,6 +54,11 @@ function App() {
               </div>
             )}
           />
+
+
+          <Router exact path="/search"
+          render={props => (<div><Search/></div>)}/>
+
         </Switch>
 
         <Footer />

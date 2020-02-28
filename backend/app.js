@@ -23,7 +23,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://@cluster0-mtrkl.mongodb.net/coAIDB", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGO_KEY, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection err:"));
 db.once("open", () => {
@@ -42,7 +42,6 @@ const userSchema = new mongoose.Schema({
     password: String
 });
 
-// Hash and Salt
 userSchema.plugin(passportLocalMongoose);
 
 
