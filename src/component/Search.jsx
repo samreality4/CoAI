@@ -4,14 +4,14 @@ import AddIcon from "@material-ui/icons/Add";
 import { Zoom, Fab } from "@material-ui/core";
 import { Form, Col } from "react-bootstrap";
 import Cards from "./Cards";
+import AddForm from "./AddForm";
 
 function Search() {
+  function getList() {}
 
-function getList () {
-
-
-
-}
+  function add() {
+    return true
+  }
 
   return (
     <div>
@@ -43,9 +43,11 @@ function getList () {
                   />
                 </Col>
                 <Col sm={1}>
-                  <button 
-                  onClick={getList}
-                  type="button" className="btn btn-danger wrn-btn">
+                  <button
+                    onClick={getList}
+                    type="button"
+                    className="btn btn-danger wrn-btn"
+                  >
                     <SearchIcon />
                   </button>
                 </Col>
@@ -54,19 +56,16 @@ function getList () {
           </div>
         </div>
       </Zoom>
-      <div className="d-flex flex-column">
-      <Cards/>
-
-      </div>
-    <Zoom>
-    <Fab  
-    style={{ position: "fixed", bottom: "50px", right: "50px" }}>
-        {" "}
-        <AddIcon />
-      </Fab>
-
-    </Zoom>
-  
+      <div>{/* <Cards /> */}</div>
+      <Zoom in={true}>
+        <Fab
+        color="primary"
+          style={{ position: "fixed", bottom: "50px", right: "50px" }}
+          onClick={<AddForm slick={true}/>}
+        >
+          <AddIcon />
+        </Fab>
+      </Zoom>/>
     </div>
   );
 }

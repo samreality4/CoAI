@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 
-function OneCard() {
+function OneCard(props) {
   return (
     <Card className="shadow" bg="light" text="black" style={{ width: "18rem" }}>
       <Card.Header as="h5">Javascript</Card.Header>

@@ -11,13 +11,13 @@ function Cards () {
     
     
 
-return <Grow>
-{list.map(item => {
+// return 
+// {list.map(item => {
 
 
-    // <OneCard/>
-})}
-</Grow>
+//     // <OneCard/>
+// })}
+
 
 
 }

@@ -7,7 +7,7 @@ function About() {
       <Zoom in={true}>
 <Card
       className="col-md-8 col-sm-10 shadow mx-auto text-white p-1"
-      style={{marginTop: "20px" }}
+      style={{marginTop: "20px", marginBottom: "20px"}}
     >
       <Card.Img
         src="https://www.thespruce.com/thmb/l5NVzCxIZIi7gHl_2fAh3WGzJ_I=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/basketball-court-852678264-5be780a446e0fb0026ebd1e3.jpg"
