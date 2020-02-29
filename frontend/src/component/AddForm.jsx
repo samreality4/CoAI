@@ -6,15 +6,9 @@ import axios from "axios";
 
 function AddForm(props) {
 
-    //TODO need to change the state when Fab is click in parent
-   
-    console.log(props.clickstate);
+
   const [clickState, setClickState] = useState(false);
 
-  if(props.clickstate===true){
-
-    setClickState(true);
-  } 
   
   const [form, setForm] = useState({
     question: String,
@@ -48,9 +42,9 @@ function AddForm(props) {
   }
 
   return (
-    <Modal show={clickState} size="lg">
-      <Modal.Header closeButton>
-        <Modal.Title className="Header">Add a new entry</Modal.Title>
+    <Modal show={props.clickstate} size="lg">
+      <Modal.Header>
+        <Modal.Title className="header">Add a new entry</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Container>
@@ -123,7 +117,7 @@ function AddForm(props) {
             </Form.Group>
 
             <Fab
-              onClick={onSubmit}
+              onClick={props.clickfunction}
               variant="primary"
               color="primary"
           
@@ -134,7 +128,7 @@ function AddForm(props) {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Fab color="secondary" onClick={onClick}>
+        <Fab color="secondary" onClick={props.clickfunction}>
           Close
         </Fab>
       </Modal.Footer>

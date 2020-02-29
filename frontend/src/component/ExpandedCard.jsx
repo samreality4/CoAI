@@ -1,8 +1,11 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import { Modal } from "react-bootstrap";
 
-function ExpandedCard() {
+
+function ExpandedCard(props) {
   return (
+    <Modal show={props.show}> 
     <Card className="shadow mx-auto col-auto" style={{ width: "50rem" }}>
       <Card.Body>
 
@@ -29,6 +32,7 @@ function ExpandedCard() {
     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </Card.Body>
     </Card>
+    </Modal>
   );
 }
 

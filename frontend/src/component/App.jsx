@@ -55,9 +55,9 @@ function App() {
             )}
           />
 
-
-          <Router exact path="/search"
-          render={props => (<div><Search/></div>)}/>
+          <Route exact path="/search"
+          render={props => (<div><
+            Search/></div>)}/>
 
         </Switch>
 

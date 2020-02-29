@@ -22,6 +22,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+console.log(process.env.MONGO_KEY);
 
 mongoose.connect(process.env.MONGO_KEY, { useNewUrlParser: true });
 const db = mongoose.connection;
@@ -133,6 +134,6 @@ app.get("/logout", (req, res)=> {
 //TODO Need to connect react to the backend
 //TODO Setup routes
 
-app.listen(3001, () => {
+app.listen(5000, () => {
   console.log("Server started on port 3001");
 });

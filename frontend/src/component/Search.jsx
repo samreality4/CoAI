@@ -6,17 +6,21 @@ import { Form, Col } from "react-bootstrap";
 import AddForm from "./AddForm";
 import { useState } from "react";
 import Cards from "./Cards";
+import {connect} from "react-redux"
 
 function Search() {
+
+
   function getList() {}
 
-  const [click, setClickState] = useState(false);
+  const [clickState, setClickState] = useState(false);
 
 
 
-  function add(value) {
-  
-  }
+  function handleClick(value) {
+    setClickState(!clickState);
+
+  };
 
   return (
     <div>
@@ -64,7 +68,7 @@ function Search() {
      <Cards />
       <Zoom in={true}>
         <Fab
-        onClick={add}
+        onClick={handleClick}
         color="primary"
           style={{ position: "fixed", bottom: "50px", right: "50px" }}
         
@@ -73,6 +77,8 @@ function Search() {
         </Fab>
       </Zoom>
     />
+    <AddForm clickstate={clickState}
+    clickfunction={handleClick}/>
     </div>
   );
 }
