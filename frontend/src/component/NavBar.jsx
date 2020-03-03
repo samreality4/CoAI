@@ -7,8 +7,6 @@ import { Button } from '@material-ui/core';
 
 
 function NavBar () {
-
-
     return <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Navbar.Brand href="">CoAI</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />

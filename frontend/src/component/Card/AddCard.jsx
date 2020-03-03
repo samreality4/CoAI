@@ -4,12 +4,9 @@ import { Fab } from "@material-ui/core";
 import { useState } from "react";
 import axios from "axios";
 
-function AddForm(props) {
-
-
+function AddCard(props) {
   const [clickState, setClickState] = useState(false);
 
-  
   const [form, setForm] = useState({
     question: String,
     keyword: String,
@@ -25,16 +22,16 @@ function AddForm(props) {
     });
   }
 
-  function onSubmit () {
-
-    axios.post("/addform", form).then(function (response) {
+  function onSubmit() {
+    axios
+      .post("/addform", form)
+      .then(function(response) {
         console.log(response);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
-      });;
+      });
     setClickState(false);
-
   }
 
   function onClick() {
@@ -82,7 +79,7 @@ function AddForm(props) {
                   placeholder="Enter github url"
                 />
               </Form.Group>
-            
+
               <Form.Group as={Col} controlId="formGridLanguage">
                 <Form.Label>Language</Form.Label>
                 <Form.Control
@@ -120,7 +117,6 @@ function AddForm(props) {
               onClick={props.clickfunction}
               variant="primary"
               color="primary"
-          
             >
               Submit
             </Fab>
@@ -136,4 +132,4 @@ function AddForm(props) {
   );
 }
 
-export default AddForm;
+export default AddCard;

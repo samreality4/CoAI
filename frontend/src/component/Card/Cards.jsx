@@ -8,15 +8,19 @@ function Cards() {
   const [list, setList] = useState([
     {
       id: 1,
-      question: "ww",
-      projecturl: "www",
-      language: "Swift"
+      question: "What was the problem",
+      projecturl: "wwww.github.com/coAI",
+      language: "Swift",
+      keyword: "shit",
+      code: "fdlajfldajklfdjklajfdkljsafldjsalkfjdklsajfldsajfdljlfdjkalfjdlkajfldajlkfdjsalfjkdlajfldsajfldsjalfdjasfldjasfldalfjdsaklfjdlsajfldsajfkldjsaklfdsjal"
     },
     {
       id: 2,
-      question: "ww",
-      projecturl: "www",
-      language: "Swift"
+      question: "How to add pass props to child onclick?",
+      projecturl: "www.github.com/CoAI",
+      language: "Swift",
+      key: "fuck shit",
+      code: "fdlajfldajklfdjklajfdkljsafldjsalkfjdklsajfldsajfdljlfdjkalfjdlkajfldajlkfdjsalfjkdlajfldsajfldsjalfdjasfldjasfldalfjdsaklfjdlsajfldsajfkldjsaklfdsjal"
     },
     {
       id: 3,
@@ -35,13 +39,15 @@ function Cards() {
   return (
     <Grow in={true} timeout="10000">
       <div className="container mx-auto">
-        <div className="d-flex row justify-content-center">
+        <div className="d-flex row justify-content-start">
           {list.map(item => {
             return (
               <OneCard
                 language={item.language}
                 question={item.question}
                 projecturl={item.projecturl}
+                keyword={item.keyword}
+                code={item.code}
               />
             );
           })}

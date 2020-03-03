@@ -3,9 +3,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
 import { Zoom, Fab } from "@material-ui/core";
 import { Form, Col } from "react-bootstrap";
-import AddForm from "./AddForm";
+import AddCard from "./Card/AddCard";
 import { useState } from "react";
-import Cards from "./Cards";
+import Cards from "./Card/Cards";
 import {connect} from "react-redux"
 
 function Search() {
@@ -37,7 +37,7 @@ function Search() {
             <Form>
               <Form.Row className="col-sm-12">
                 <Col sm={3}>
-                  <Form.Control as="select" className="option">
+                  <Form.Control name="language" as="select" className="option">
                     <option>Javascript</option>
                     <option>Kotlin</option>
                     <option>Swift</option>
@@ -48,6 +48,7 @@ function Search() {
                   <Form.Control
                     as="input"
                     type="text"
+                    name="text"
                     placeholder="Enter any keywords"
                   />
                 </Col>
@@ -77,10 +78,12 @@ function Search() {
         </Fab>
       </Zoom>
     />
-    <AddForm clickstate={clickState}
+    <AddCard clickstate={clickState}
     clickfunction={handleClick}/>
     </div>
   );
 }
+
+
 
 export default Search;

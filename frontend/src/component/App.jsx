@@ -1,18 +1,19 @@
 import React from "react";
-import NavBar from "./NavBar";
+import Header from "./Header";
 import LogIn from "./LogIn";
 import Footer from "./Footer";
 import Search from "./Search";
-import AddForm from "./AddForm";
+import AddCard from "./Card/AddCard";
 import Register from "./Register";
 import About from "./About";
+import Home from "./Home"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <div>
-        <NavBar />
+        <Header/>
 
         <Switch>
           <Route
@@ -20,9 +21,7 @@ function App() {
             path="/"
             render={props => (
               <div>
-                <AddForm />
-
-                
+                <Home/>
               </div>
             )}
           />
@@ -55,7 +54,7 @@ function App() {
             )}
           />
 
-          <Route exact path="/search"
+          <Route exact path="/main"
           render={props => (<div><
             Search/></div>)}/>
 
