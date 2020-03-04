@@ -5,7 +5,6 @@ import { useState } from "react";
 import axios from "axios";
 
 function AddCard(props) {
-  const [clickState, setClickState] = useState(false);
 
   const [form, setForm] = useState({
     question: String,
@@ -24,19 +23,16 @@ function AddCard(props) {
 
   function onSubmit() {
     axios
-      .post("/addform", form)
+      .post("/api/add", form)
       .then(function(response) {
         console.log(response);
       })
       .catch(function(error) {
         console.log(error);
       });
-    setClickState(false);
+    props.clickfunction()
   }
 
-  function onClick() {
-    setClickState(false);
-  }
 
   return (
     <Modal show={props.clickstate} size="lg">
@@ -114,7 +110,7 @@ function AddCard(props) {
             </Form.Group>
 
             <Fab
-              onClick={props.clickfunction}
+              onClick={onSubmit}
               variant="primary"
               color="primary"
             >

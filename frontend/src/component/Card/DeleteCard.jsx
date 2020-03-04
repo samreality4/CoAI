@@ -1,9 +1,22 @@
 import React from "react";
 import { Fab } from "@material-ui/core";
 import { Modal } from "react-bootstrap";
+import axios from "axios";
 
 function DeleteCard(props) {
+
+  console.log(props.id);
   function handleYesClick() {
+    axios
+      .post("/api/delete", props.id)
+      .then(function(response) {
+        console.log(response);
+        
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
     props.handleclick();
 
     props.extendedcardclick();

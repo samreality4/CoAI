@@ -2,13 +2,14 @@ import React from "react";
 import { Modal, Container, Form, Col } from "react-bootstrap";
 import { Fab } from "@material-ui/core";
 import { useState } from "react";
-import {axios} from "react";
+import axios from "axios";
 
 
 function EditForm(props) {
-  const [clickState, setClickState] = useState(false);
+
 
   const [form, setForm] = useState({
+    id:props.cardprops.id,
     question: props.cardprops.question,
     keyword: props.cardprops.keyword,
     projectUrl: props.cardprops.projecturl,
@@ -23,13 +24,18 @@ function EditForm(props) {
     });
   }
 
-  function onSubmit() {
-
+  function onSave() {
+    axios
+      .post("/api/edit", form)
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    props.handleclick();
   }
 
-  function onClick() {
-    setClickState(false);
-  }
 
   return (
     <Modal show={props.clickstate} size="lg">
@@ -107,7 +113,7 @@ function EditForm(props) {
             </Form.Group>
 
             <Fab
-              onClick={props.handleclick}
+              onClick={onSave}
               variant="primary"
               color="primary"
             >

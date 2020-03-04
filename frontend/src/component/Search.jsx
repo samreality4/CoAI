@@ -7,17 +7,29 @@ import AddCard from "./Card/AddCard";
 import { useState } from "react";
 import Cards from "./Card/Cards";
 import {connect} from "react-redux"
+import {fetchData} from "../actions";
 
-function Search() {
+function Search(props) {
 
+const [searchState, setSearchState] = useState("");
 
-  function getList() {}
+function onChange (e) {
+
+  setSearchState(e.target.value)
+};
+
+ function getList(e) {
+    
+   console.log(searchState);
+  props.fetchData(searchState);
+
+  };
 
   const [clickState, setClickState] = useState(false);
 
 
 
-  function handleClick(value) {
+  function handleClick() {
     setClickState(!clickState);
 
   };
@@ -36,20 +48,14 @@ function Search() {
           >
             <Form>
               <Form.Row className="col-sm-12">
-                <Col sm={3}>
-                  <Form.Control name="language" as="select" className="option">
-                    <option>Javascript</option>
-                    <option>Kotlin</option>
-                    <option>Swift</option>
-                    <option>Java</option>
-                  </Form.Control>
-                </Col>
-                <Col sm={8}>
+                <Col sm={11}>
                   <Form.Control
                     as="input"
                     type="text"
                     name="text"
+                    value={searchState}
                     placeholder="Enter any keywords"
+                    onChange={onChange}
                   />
                 </Col>
                 <Col sm={1}>
@@ -66,7 +72,9 @@ function Search() {
           </div>
         </div>
       </Zoom>
-     <Cards />
+     <Cards 
+     list={props.data}
+     />
       <Zoom in={true}>
         <Fab
         onClick={handleClick}
@@ -85,5 +93,11 @@ function Search() {
 }
 
 
+function mapStateToProps({user}) {
 
-export default Search;
+  return {user};
+}
+
+
+
+export default connect(mapStateToProps, {fetchData})(Search);

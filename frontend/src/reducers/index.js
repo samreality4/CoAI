@@ -1,8 +1,11 @@
 import {combineReducers} from "redux";
-import authReducer from "./authReducer";
-import clickReducer from "./clickReducer";
+import logInReducer from "./logInReducer";
+import registerReducer from "./registerReducer"
+import dataReducer from "./dataReducer";
 
 export default combineReducers({
-    auth: authReducer,
-    click: clickReducer
+    login: logInReducer,
+    register: registerReducer,
+    data: dataReducer
+
 });

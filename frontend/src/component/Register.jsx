@@ -1,12 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 import { Zoom, Fab } from "@material-ui/core";
 import { Form } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import axios from "axios";
+import {connect} from "react-redux"
+import {registerUser} from "../actions";
 
 
-function Register() {
+function Register(props) {
+  const [registerState, setRegisterState] = useState({
+    userName: String,
+    password: String,
+    passwordConfirm: String
+  });
 
+  function onChange(event) {
+    const { name, value } = event.target;
+    setRegisterState(preVal => {
+      return { ...preVal, [name]: value };
+    });
+  }
 
+  function onRegister() {
+    if (registerState.password === registerState.passwordConfirm) {
+      props.registerUser(registerState);
+    } else {
+      console.log(registerState);
+      alert("password doesn't not match!");
+    };
+  };
 
   return (
     <div className="mt-5 text-center">
@@ -17,33 +39,40 @@ function Register() {
           <div className="col-lg-4 col-md-6 mx-auto">
             <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
               <Card.Body>
-                <Form action="/login" method="POST">
-                  <Form.Group>
+                <Form>
+                  <Form.Group onChange={onChange} value={registerState.userName}>
                     <label for="email">Email</label>
                     <input
                       type="email"
                       className="form-control"
-                      name="username"
+                  
                     />
                   </Form.Group>
-                  <Form.Group>
+                  <Form.Group onChange={onChange} value={registerState.password}>
                     <label for="password">Password</label>
                     <input
                       type="password"
                       className="form-control"
-                      name="password"
+                
                     />
                   </Form.Group>
-                  <Form.Group>
+                  <Form.Group
+                    onChange={onChange}
+                    value={registerState.passwordConfirm}
+                  >
                     <label for="password">Confirm Password</label>
                     <input
                       type="password"
                       className="form-control"
-                      name="password"
+                      
                     />
                   </Form.Group>
                   <Zoom in={true}>
-                    <Fab color="secondary" type="submit" variant="extended">
+                    <Fab
+                      onClick={onRegister}
+                      color="secondary"
+                      variant="extended"
+                    >
                       Register
                     </Fab>
                   </Zoom>
@@ -57,4 +86,10 @@ function Register() {
   );
 }
 
-export default Register;
+function mapStateToProps({user}) {
+
+  return {user};
+}
+
+
+export default connect(mapStateToProps, {registerUser}) (Register);

@@ -8,6 +8,8 @@ const passportLocalMongoose = require("passport-local-mongoose");
 
 const app = express();
 
+//axios posts json
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -23,15 +25,24 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 mongoose.set("useCreateIndex", true);
-mongoose.connect(process.env.MONGO_KEY, {
+const conn1 = mongoose.createConnection(process.env.MONGO_KEY1, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection err:"));
-db.once("open", () => {
-  console.log("we are connected!");
+const conn2 = mongoose.createConnection(process.env.MONGO_KEY2, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+conn1.on("error", console.error.bind(console, "connection err:"));
+conn1.once("open", () => {
+  console.log("we are connected on userdb!");
+});
+
+conn2.on("error", console.error.bind(console, "connection err:"));
+conn2.once("open", () => {
+  console.log("we are connected on codedb!");
 });
 
 //User Collection Related//
@@ -43,76 +54,85 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(passportLocalMongoose);
 
-const User = mongoose.model("User", userSchema);
-
+const User = conn1.model("User", userSchema);
 
 passport.use(User.createStrategy());
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
 //Code Collection Related//
 
 const codeSchema = new mongoose.Schema({
   question: String,
-  projecturl: String,
+  projectUrl: String,
   keyword: String,
-  language: String,
+  codeLanguage: String,
   code: String
 });
 
-const Code = mongoose.model("Code", codeSchema);
+codeSchema.index({ question: "text", projectUrl: "text", keyword: "text", codeLanguage: "text", code: "text" });
 
-
-
-
+const Code = conn2.model("Code", codeSchema);
 
 app.get("/", (req, res) => {
-  Code.find({}, function(err, codes) {
     res.send("hello everyone");
   });
-});
 
-app.get("/search", async (req, res) => {
-  const result = await Code.aggregate([
+
+app.get("/main", (req, res) => {
+  
+    res.send("hello everyone");
+  });
+
+
+
+app.post("/api/search", (req, res) => {
+  console.log(req.body.text);
+  Code.find(
     {
-      $searchBeta: {
-        search: {
-          query: req.body.text,
-          path: ["language", "keyword"]
-        }
+      $text: {
+        
+        $search: req.body.text
+      }
+    },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send("Unable to search.  Please try again later.");
+      } else {
+        res.send(result);
       }
     }
-  ]);
-  res.send(result);
+  );
 });
 
-app.post("/search", (req, res) => {
+app.post("/api/add", (req, res) => {
   const code = new Code({
     question: req.body.question,
-    projectUrl: req.body.projecturl,
+    projectUrl: req.body.projectUrl,
     keyword: req.body.keyword,
-    language: req.body.language,
+    codeLanguage: req.body.language,
     code: req.body.code
   });
   code.save(err => {
     if (err) {
-      res.send(err);
+      console.log(err);
+      res.send("Unable to save. Please try again later.");
     } else {
       res.send("successfully added");
     }
   });
 });
 
-app.put("/search", (req, res) => {
+app.put("/api/edit", (req, res) => {
   Code.update(
     { _id: req.body.id },
     {
       question: req.body.question,
-      projectUrl: req.body.projecturl,
+      projectUrl: req.body.projectUrl,
       keyword: req.body.keyword,
-      language: req.body.language,
+      codeLanguage: req.body.language,
       code: req.body.code
     },
     { overwrite: true },
@@ -120,21 +140,27 @@ app.put("/search", (req, res) => {
       if (!err) {
         res.send("successfully updated!");
       } else {
-        res.send(err);
+        console.log(err);
+        res.send("Unble to update.  Please try again later.");
       }
     }
   );
 });
 
-app.delete("/search", (req, res) => {
+app.delete("/api/delete", (req, res) => {
   Code.deleteOne({ _id: req.body.id }, err => {
-    res.send("successfully deleted");
+    if (err) {
+      console.log(err);
+      res.send("Unable to delete.  Please try again later.");
+    } else {
+      res.send("successfully deleted");
+    }
   });
 });
 
-app.get("/home", (req, res) => {
+app.get("/main", (req, res) => {
   if (req.isAuthenticated()) {
-    res.redirect("/main");
+
   } else {
     res.redirect("/login");
   }
@@ -146,7 +172,7 @@ app.post("/register", (req, res) => {
     user
   ) {
     if (err) {
-      res.redirect("/register");
+     res.send(err);
     } else {
       passport.authenticate("local")(req, res, () => {
         res.redirect("/home");
@@ -166,7 +192,7 @@ app.post("/login", (req, res) => {
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, () => {
-        res.redirect("/search");
+        res.redirect("/main");
       });
     }
   });
