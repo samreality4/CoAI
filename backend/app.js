@@ -71,28 +71,29 @@ const codeSchema = new mongoose.Schema({
   code: String
 });
 
-codeSchema.index({ question: "text", projectUrl: "text", keyword: "text", codeLanguage: "text", code: "text" });
+codeSchema.index({
+  question: "text",
+  projectUrl: "text",
+  keyword: "text",
+  codeLanguage: "text",
+  code: "text"
+});
 
 const Code = conn2.model("Code", codeSchema);
 
 app.get("/", (req, res) => {
-    res.send("hello everyone");
-  });
-
+  res.send("hello everyone");
+});
 
 app.get("/main", (req, res) => {
-  
-    res.send("hello everyone");
-  });
-
-
+  res.send("hello everyone");
+});
 
 app.post("/api/search", (req, res) => {
   console.log(req.body.text);
   Code.find(
     {
       $text: {
-        
         $search: req.body.text
       }
     },
@@ -160,25 +161,26 @@ app.delete("/api/delete", (req, res) => {
 
 app.get("/main", (req, res) => {
   if (req.isAuthenticated()) {
-
+    console.log("authenticated");
   } else {
     res.redirect("/login");
   }
 });
 
-app.post("/register", (req, res) => {
-  User.register({ username: req.body.username }, req.body.password, function(
-    err,
-    user
-  ) {
+app.post("/register", (req, res)=>{
+
+  User.register({username: req.body.username}, req.body.password, function(err, user){
     if (err) {
-     res.send(err);
+      console.log(err);
+      res.redirect("/register");
     } else {
-      passport.authenticate("local")(req, res, () => {
-        res.redirect("/home");
+      passport.authenticate("local")(req, res, ()=>{
+        console.log(res);
+        res.redirect("/main");
       });
     }
   });
+
 });
 
 app.post("/login", (req, res) => {
@@ -186,25 +188,28 @@ app.post("/login", (req, res) => {
     username: req.body.username,
     password: req.body.password
   });
-
   req.login(user, err => {
     if (err) {
       console.log(err);
+      res.send(err);
     } else {
-      passport.authenticate("local")(req, res, () => {
-        res.redirect("/main");
-      });
+      passport.authenticate(
+        "local",
+        (req,
+        res,
+        () => {
+          res.redirect("/main");
+          console.log("login succesfully");
+        })
+      );
     }
   });
 });
 
 app.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/login");
+  res.send(req.username);
 });
-
-//TODO Need to connect react to the backend
-//TODO Setup routes
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server started on port 5000");

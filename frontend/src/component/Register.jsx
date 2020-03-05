@@ -19,7 +19,11 @@ function Register(props) {
     setRegisterState(preVal => {
       return { ...preVal, [name]: value };
     });
+
+    console.log(registerState);
   }
+
+  
 
   function onRegister() {
     if (registerState.password === registerState.passwordConfirm) {
@@ -40,31 +44,31 @@ function Register(props) {
             <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
               <Card.Body>
                 <Form>
-                  <Form.Group onChange={onChange} value={registerState.userName}>
+                  <Form.Group onChange={onChange} value={registerState.userName} required>
                     <label for="email">Email</label>
                     <input
                       type="email"
                       className="form-control"
-                  
+                      name="username"
                     />
                   </Form.Group>
-                  <Form.Group onChange={onChange} value={registerState.password}>
+                  <Form.Group onChange={onChange} value={registerState.password} required>
                     <label for="password">Password</label>
                     <input
                       type="password"
                       className="form-control"
-                
+                      name="password"
                     />
                   </Form.Group>
                   <Form.Group
                     onChange={onChange}
-                    value={registerState.passwordConfirm}
+                    value={registerState.passwordConfirm} required
                   >
                     <label for="password">Confirm Password</label>
                     <input
                       type="password"
                       className="form-control"
-                      
+                      name="passwordConfirm"
                     />
                   </Form.Group>
                   <Zoom in={true}>
@@ -86,9 +90,9 @@ function Register(props) {
   );
 }
 
-function mapStateToProps({user}) {
+function mapStateToProps({auth}) {
 
-  return {user};
+  return {auth};
 }
 
 

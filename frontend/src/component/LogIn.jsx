@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Zoom, Fab } from "@material-ui/core";
 import { Form } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import axios from "axios";
 import {connect} from "react-redux"
 import {logInUser} from "../actions";
 
@@ -33,7 +32,7 @@ function LogIn(props) {
             <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
               <Card.Body>
                 <Form>
-                  <Form.Group onChange={onChange} value={logInState.userName}>
+                  <Form.Group onChange={onChange} value={logInState.userName} required>
                     <label for="email">Email</label>
                     <input
                       type="email"
@@ -41,7 +40,7 @@ function LogIn(props) {
                       name="username"
                     />
                   </Form.Group>
-                  <Form.Group onChange={onChange} value={logInState.password}>
+                  <Form.Group onChange={onChange} value={logInState.password} required>
                     <label for="password">Password</label>
                     <input
                       type="password"
@@ -64,9 +63,9 @@ function LogIn(props) {
   );
 }
 
-function mapStateToProps({user}) {
+function mapStateToProps({auth}) {
 
-  return {user};
+  return {auth};
 }
 
 export default connect(mapStateToProps, {logInUser})(LogIn);

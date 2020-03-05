@@ -1,10 +1,13 @@
 import axios from "axios";
 import { LOGIN_USER, REGISTER_USER, FETCH_DATA } from "./types";
 
+
+
 export const logInUser = login => async dispatch => {
   try {
     const res = await axios.post("/login", login);
     dispatch({ type: LOGIN_USER, payload: res.data });
+    console.log(res.data);
   } catch (err) {
     console.log(err);
   }

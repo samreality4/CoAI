@@ -93,9 +93,9 @@ function onChange (e) {
 }
 
 
-function mapStateToProps({user}) {
+function mapStateToProps({data}) {
 
-  return {user};
+  return {data};
 }
 
 

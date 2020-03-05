@@ -31,6 +31,7 @@ function AddCard(props) {
         console.log(error);
       });
     props.clickfunction()
+    
   }
 
 
