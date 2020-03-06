@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import {connect} from "react-redux"
 import {logInUser} from "../actions";
+import { withRouter } from 'react-router-dom';
 
 function LogIn(props) {
   const [logInState, setLogInState] = useState({
@@ -19,8 +20,12 @@ function LogIn(props) {
   }
 
   function onLogin() {
-    props.logInUser(logInState);
-  }
+    props.logInUser(logInState, props.history);
+    
+}
+
+
+console.log("main" + props.auth);
 
   return (
     <div className="mt-5 text-center">
@@ -49,7 +54,7 @@ function LogIn(props) {
                     />
                   </Form.Group>
                   <Zoom in={true}>
-                    <Fab onClick={onLogin} color="primary" type="submit">
+                    <Fab onClick={onLogin} color="primary">
                       Login
                     </Fab>
                   </Zoom>
@@ -63,9 +68,10 @@ function LogIn(props) {
   );
 }
 
+
 function mapStateToProps({auth}) {
 
   return {auth};
 }
 
-export default connect(mapStateToProps, {logInUser})(LogIn);
+export default withRouter(connect(mapStateToProps, {logInUser})(LogIn));

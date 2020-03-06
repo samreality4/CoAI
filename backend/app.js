@@ -15,7 +15,7 @@ app.use(express.static("public"));
 
 app.use(
   session({
-    secret: "secret",
+    secret: "secret doors",
     resave: false,
     saveUninitialized: false
   })
@@ -58,8 +58,16 @@ const User = conn1.model("User", userSchema);
 
 passport.use(User.createStrategy());
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    console.log(err)
+    done(err, user);
+  });
+});
 
 //Code Collection Related//
 
@@ -85,8 +93,18 @@ app.get("/", (req, res) => {
   res.send("hello everyone");
 });
 
+app.get("/current_user", (req, res)=> {
+
+  if (req.isAuthenticated()) {
+    req.send(req.user);
+  } else {
+   console.log("login　fail");
+  }
+
+});
+
 app.get("/main", (req, res) => {
-  res.send("hello everyone");
+  res.send("hello world");
 });
 
 app.post("/api/search", (req, res) => {
@@ -163,52 +181,48 @@ app.get("/main", (req, res) => {
   if (req.isAuthenticated()) {
     console.log("authenticated");
   } else {
-    res.redirect("/login");
+   console.log("login　fail");
   }
 });
 
-app.post("/register", (req, res)=>{
+app.post("/register", function(req, res){
 
   User.register({username: req.body.username}, req.body.password, function(err, user){
     if (err) {
       console.log(err);
-      res.redirect("/register");
     } else {
-      passport.authenticate("local")(req, res, ()=>{
-        console.log(res);
-        res.redirect("/main");
+      passport.authenticate("local")(req, res, function(){
+        res.send(req.user);
       });
     }
   });
 
 });
 
-app.post("/login", (req, res) => {
+
+app.post("/login", function(req, res){
+
   const user = new User({
     username: req.body.username,
     password: req.body.password
   });
-  req.login(user, err => {
+
+  req.login(user, function(err){
     if (err) {
-      console.log(err);
-      res.send(err);
+      console.log("there was an "+ err);
     } else {
-      passport.authenticate(
-        "local",
-        (req,
-        res,
-        () => {
-          res.redirect("/main");
-          console.log("login succesfully");
-        })
-      );
+      passport.authenticate("local")(req, res, function(){
+        res.send(req.user);
+      
+      });
     }
   });
+
 });
 
 app.get("/logout", (req, res) => {
   req.logout();
-  res.send(req.username);
+  res.send(false);
 });
 
 app.listen(process.env.PORT || 5000, () => {

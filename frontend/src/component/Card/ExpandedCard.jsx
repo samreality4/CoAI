@@ -23,26 +23,28 @@ function ExpandedCard(props) {
 
   return (
     <div>
-      <Modal show={props.clickstate} onHide={props.handleclick}>
+      <Modal size="xl" show={props.clickstate} onHide={props.handleclick}>
         <Modal.Header closeButton>
-          {" "}
           <h1>{props.cardprops.language}</h1>
         </Modal.Header>
         <Card
           id={props.cardprops.id}
           className="shadow mx-auto col-auto"
-          style={{ width: "50rem" }}
+          style={{ width: "auto" }}
         >
           <Card.Body>
             <Card.Title>Question</Card.Title>
             <Card.Text>{props.cardprops.question}</Card.Text>
             <Card.Title>Github Link</Card.Title>
-            <Card.Text>{props.cardprops.projecturl}</Card.Text>
+            <Card.Text>
+              <a href={props.cardprops.projecturl}>
+                {props.cardprops.projecturl}
+              </a>
+            </Card.Text>
             <Card.Title>Keywords</Card.Title>
             <Card.Text>{props.cardprops.keyword}</Card.Text>
             <Card.Title>Solution Code</Card.Title>
-            <Card.Text></Card.Text>
-            {props.cardprops.code}
+            <Card.Text>{props.cardprops.code}</Card.Text>
           </Card.Body>
         </Card>
         <Modal.Footer className="container d-flex p-1">
@@ -54,7 +56,7 @@ function ExpandedCard(props) {
           </Fab>
         </Modal.Footer>
       </Modal>
-      
+
       <EditCard
         handleclick={handleEditClick}
         clickstate={editState}

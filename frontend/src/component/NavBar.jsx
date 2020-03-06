@@ -4,28 +4,18 @@ import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
+import { logOutUser } from "../actions";
+import { withRouter } from 'react-router-dom';
 
 function NavBar(props) {
+function onLogOut() {
+props.logOutUser(props.history);
+
+}
+
   function renderContent() {
     switch (props.auth) {
       case null:
-        return (
-          <Nav>
-            <Link to="/login" className="nav-link">
-              <Button variant="contained" color="primary">
-                Log In
-              </Button>
-            </Link>
-            <Link to="/register" className="nav-link">
-              <Button variant="contained" color="secondary">
-                Register
-              </Button>
-            </Link>{" "}
-            <Link className="nav-link" to="/about">
-              <Button variant="contained">About Me</Button>
-            </Link>
-          </Nav>
-        );
       case false:
         return (
           <Nav>
@@ -38,7 +28,7 @@ function NavBar(props) {
               <Button variant="contained" color="secondary">
                 Register
               </Button>
-            </Link>{" "}
+            </Link>
             <Link className="nav-link" to="/about">
               <Button variant="contained">About Me</Button>
             </Link>
@@ -46,14 +36,18 @@ function NavBar(props) {
         );
       default:
         return (
-          <Link to="/logout" className="nav-link">
-            <Button variant="contained" color="secondary">
-              logout
-            </Button>{" "}
+          <Nav>
+            <Link to="/logout" className="nav-link">
+              <Button 
+              onClick = {onLogOut}
+              variant="contained" color="secondary">
+                logout
+              </Button>
+            </Link>
             <Link className="nav-link" to="/about">
               <Button variant="contained">About Me</Button>
             </Link>
-          </Link>
+          </Nav>
         );
     }
   }
@@ -80,8 +74,7 @@ function NavBar(props) {
 }
 
 function mapStateToProps({ auth }) {
-  console.log(auth);
   return { auth };
 }
 
-export default connect(mapStateToProps)(NavBar);
+export default withRouter(connect(mapStateToProps, {logOutUser})(NavBar));

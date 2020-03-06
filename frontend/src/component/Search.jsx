@@ -6,40 +6,33 @@ import { Form, Col } from "react-bootstrap";
 import AddCard from "./Card/AddCard";
 import { useState } from "react";
 import Cards from "./Card/Cards";
-import {connect} from "react-redux"
-import {fetchData} from "../actions";
+import { connect } from "react-redux";
+import { fetchData } from "../actions";
 
 function Search(props) {
+  const [searchState, setSearchState] = useState("");
 
-const [searchState, setSearchState] = useState("");
+  function onChange(e) {
+    setSearchState(e.target.value);
+  }
 
-function onChange (e) {
-
-  setSearchState(e.target.value)
-};
-
- function getList(e) {
-    
-   console.log(searchState);
-  props.fetchData(searchState);
-
-  };
+  function getList(e) {
+    console.log(searchState);
+    props.fetchData(searchState);
+  }
 
   const [clickState, setClickState] = useState(false);
 
-
-
   function handleClick() {
     setClickState(!clickState);
-
-  };
+  }
 
   return (
     <div>
       <Zoom in={true}>
         <div>
           <h1 className="text-center" style={{ marginTop: "200px" }}>
-            Hi User! Today is productive day!
+            Hi! Today is productive day!
           </h1>
 
           <div
@@ -72,32 +65,24 @@ function onChange (e) {
           </div>
         </div>
       </Zoom>
-     <Cards 
-     list={props.data}
-     />
+      <Cards list={props.data} />
       <Zoom in={true}>
         <Fab
-        onClick={handleClick}
-        color="primary"
+          onClick={handleClick}
+          color="primary"
           style={{ position: "fixed", bottom: "50px", right: "50px" }}
-        
         >
           <AddIcon />
         </Fab>
       </Zoom>
-    />
-    <AddCard clickstate={clickState}
-    clickfunction={handleClick}/>
+
+      <AddCard clickstate={clickState} clickfunction={handleClick} />
     </div>
   );
 }
 
-
-function mapStateToProps({data}) {
-
-  return {data};
+function mapStateToProps({ data }) {
+  return { data };
 }
 
-
-
-export default connect(mapStateToProps, {fetchData})(Search);
+export default connect(mapStateToProps, { fetchData })(Search);

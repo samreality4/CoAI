@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import axios from "axios";
 import {connect} from "react-redux"
 import {registerUser} from "../actions";
+import { withRouter } from 'react-router-dom';
 
 
 function Register(props) {
@@ -27,7 +28,7 @@ function Register(props) {
 
   function onRegister() {
     if (registerState.password === registerState.passwordConfirm) {
-      props.registerUser(registerState);
+      props.registerUser(registerState, props.history);
     } else {
       console.log(registerState);
       alert("password doesn't not match!");
@@ -96,4 +97,4 @@ function mapStateToProps({auth}) {
 }
 
 
-export default connect(mapStateToProps, {registerUser}) (Register);
+export default withRouter(connect(mapStateToProps, {registerUser}) (Register));

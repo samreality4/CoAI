@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./Header";
 import LogIn from "./LogIn";
 import Footer from "./Footer";
@@ -6,14 +6,30 @@ import Search from "./Search";
 import AddCard from "./Card/AddCard";
 import Register from "./Register";
 import About from "./About";
-import Home from "./Home"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./Home";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import { connect } from "react-redux";
+import {fetchUser} from "../actions";
 
-function App() {
+
+
+
+function App(props) {
+  
+  useEffect(() => {
+  props.fetchUser();
+  }, []);
+
+ console.log(props.auth); 
   return (
     <Router>
       <div>
-        <Header/>
+        <Header />
 
         <Switch>
           <Route
@@ -21,7 +37,7 @@ function App() {
             path="/"
             render={props => (
               <div>
-                <Home/>
+                <Home />
               </div>
             )}
           />
@@ -53,11 +69,17 @@ function App() {
               </div>
             )}
           />
+          <Route
+            exact
+            path="/main"
+            render={props => (
+              <div>
+                <Search />
+              </div>
+            )}
+          />
 
-          <Route exact path="/main"
-          render={props => (<div>
-            <Search/></div>)}/>
-
+         
         </Switch>
 
         <Footer />
@@ -66,4 +88,8 @@ function App() {
   );
 }
 
-export default App;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps, {fetchUser}) (App);
