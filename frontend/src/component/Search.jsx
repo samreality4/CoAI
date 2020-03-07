@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
 import { Zoom, Fab } from "@material-ui/core";
@@ -8,8 +8,15 @@ import { useState } from "react";
 import Cards from "./Card/Cards";
 import { connect } from "react-redux";
 import { fetchData } from "../actions";
+import {resetData} from "../actions"
 
 function Search(props) {
+
+  useEffect(() => {
+    return props.resetData();
+     // eslint-disable-next-line import/no-extraneous-dependencies
+   }, []);
+
   const [searchState, setSearchState] = useState("");
 
   function onChange(e) {
@@ -17,7 +24,6 @@ function Search(props) {
   }
 
   function getList(e) {
-    console.log(searchState);
     props.fetchData(searchState);
   }
 
@@ -85,4 +91,4 @@ function mapStateToProps({ data }) {
   return { data };
 }
 
-export default connect(mapStateToProps, { fetchData })(Search);
+export default connect(mapStateToProps, { fetchData, resetData })(Search);

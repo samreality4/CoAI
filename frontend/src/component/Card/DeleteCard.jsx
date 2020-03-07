@@ -2,16 +2,18 @@ import React from "react";
 import { Fab } from "@material-ui/core";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
+import { connect } from "react-redux";
+import { resetData } from "../../actions";
 
 function DeleteCard(props) {
 
   console.log(props.id);
   function handleYesClick() {
     axios
-      .post("/api/delete", props.id)
+      .delete("/api/delete", props.id)
       .then(function(response) {
         console.log(response);
-        
+        props.resetData();
       })
       .catch(function(error) {
         console.log(error);
@@ -43,5 +45,8 @@ function DeleteCard(props) {
     </Modal>
   );
 }
+function mapStateToProps({ data}) {
+  return { data};
+}
 
-export default DeleteCard;
+export default connect(mapStateToProps, { resetData })(DeleteCard);

@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { logOutUser } from "../actions";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 function NavBar(props) {
-function onLogOut() {
-props.logOutUser(props.history);
-
-}
+  function onLogOut() {
+    props.logOutUser(props.history);
+  }
 
   function renderContent() {
     switch (props.auth) {
@@ -38,9 +37,7 @@ props.logOutUser(props.history);
         return (
           <Nav>
             <Link to="/logout" className="nav-link">
-              <Button 
-              onClick = {onLogOut}
-              variant="contained" color="secondary">
+              <Button onClick={onLogOut} variant="contained" color="secondary">
                 logout
               </Button>
             </Link>
@@ -57,6 +54,7 @@ props.logOutUser(props.history);
       <Link to="/">
         <Navbar.Brand>
           <img
+            alt=""
             src="/images/SXG.png"
             width="30"
             height="30"
@@ -77,4 +75,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default withRouter(connect(mapStateToProps, {logOutUser})(NavBar));
+export default withRouter(connect(mapStateToProps, { logOutUser })(NavBar));

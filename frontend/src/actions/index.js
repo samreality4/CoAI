@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN_USER, REGISTER_USER, FETCH_DATA, FETCH_USER, LOGOUT_USER } from "./types";
+import { LOGIN_USER, REGISTER_USER, FETCH_USER, LOGOUT_USER, FETCH_DATA, RESET_DATA } from "./types";
 
 
 export const fetchUser = () => async (dispatch) => {
@@ -52,4 +52,11 @@ export const logOutUser = (history) => async dispatch => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const resetData = () => dispatch => {
+ 
+
+    dispatch({ type: RESET_DATA, payload: [] });
+
 };

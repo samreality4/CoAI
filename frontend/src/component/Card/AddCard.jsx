@@ -3,6 +3,9 @@ import { Modal, Container, Form, Col } from "react-bootstrap";
 import { Fab } from "@material-ui/core";
 import { useState } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import { resetData } from "../../actions";
+
 
 function AddCard(props) {
 
@@ -26,6 +29,7 @@ function AddCard(props) {
       .post("/api/add", form)
       .then(function(response) {
         console.log(response);
+        props.resetData();
       })
       .catch(function(error) {
         console.log(error);
@@ -129,4 +133,10 @@ function AddCard(props) {
   );
 }
 
-export default AddCard;
+function mapStateToProps({ data }) {
+  return { data};
+}
+
+export default connect(mapStateToProps, { resetData })(AddCard);
+
+

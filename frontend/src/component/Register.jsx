@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { Zoom, Fab } from "@material-ui/core";
 import { Form } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import axios from "axios";
 import {connect} from "react-redux"
 import {registerUser} from "../actions";
 import { withRouter } from 'react-router-dom';

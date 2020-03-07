@@ -24,7 +24,6 @@ function LogIn(props) {
     
 }
 
-
 console.log("main" + props.auth);
 
   return (

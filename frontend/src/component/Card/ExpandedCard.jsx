@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 import { Modal } from "react-bootstrap";
 import { Fab } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Button from "react-bootstrap/Button";
 import EditIcon from "@material-ui/icons/Edit";
 import EditCard from "./EditCard";
 import { useState } from "react";
@@ -30,7 +29,7 @@ function ExpandedCard(props) {
         <Card
           id={props.cardprops.id}
           className="shadow mx-auto col-auto"
-          style={{ width: "auto" }}
+          style={{ width: "80rem" }}
         >
           <Card.Body>
             <Card.Title>Question</Card.Title>
@@ -59,6 +58,7 @@ function ExpandedCard(props) {
 
       <EditCard
         handleclick={handleEditClick}
+        extendedcardclick={props.handleclick}
         clickstate={editState}
         cardprops={props.cardprops}
       />

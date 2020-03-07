@@ -3,13 +3,12 @@ import { Modal, Container, Form, Col } from "react-bootstrap";
 import { Fab } from "@material-ui/core";
 import { useState } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import { resetData } from "../../actions";
 
-
-function EditForm(props) {
-
-
+function EditCard(props) {
   const [form, setForm] = useState({
-    id:props.cardprops.id,
+    id: props.cardprops.id,
     question: props.cardprops.question,
     keyword: props.cardprops.keyword,
     projectUrl: props.cardprops.projecturl,
@@ -26,16 +25,17 @@ function EditForm(props) {
 
   function onSave() {
     axios
-      .post("/api/edit", form)
+      .put("/api/edit", form)
       .then(function(response) {
         console.log(response);
+        props.resetData();
       })
       .catch(function(error) {
         console.log(error);
       });
     props.handleclick();
+    props.extendedcardclick();
   }
-
 
   return (
     <Modal show={props.clickstate} size="lg">
@@ -112,12 +112,8 @@ function EditForm(props) {
               />
             </Form.Group>
 
-            <Fab
-              onClick={onSave}
-              variant="primary"
-              color="primary"
-            >
-             Save
+            <Fab onClick={onSave} variant="primary" color="primary">
+              Save
             </Fab>
           </Form>
         </Container>
@@ -130,5 +126,8 @@ function EditForm(props) {
     </Modal>
   );
 }
+function mapStateToProps({ data}) {
+  return { data };
+}
 
-export default EditForm;
+export default connect(mapStateToProps, {resetData })(EditCard);

@@ -3,7 +3,6 @@ import Header from "./Header";
 import LogIn from "./LogIn";
 import Footer from "./Footer";
 import Search from "./Search";
-import AddCard from "./Card/AddCard";
 import Register from "./Register";
 import About from "./About";
 import Home from "./Home";
@@ -11,21 +10,17 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
 } from "react-router-dom";
 import { connect } from "react-redux";
-import {fetchUser} from "../actions";
-
-
-
+import { fetchUser } from "../actions";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App(props) {
-  
   useEffect(() => {
-  props.fetchUser();
+    props.fetchUser();
+    // eslint-disable-next-line import/no-extraneous-dependencies
   }, []);
 
- console.log(props.auth); 
   return (
     <Router>
       <div>
@@ -35,7 +30,7 @@ function App(props) {
           <Route
             exact
             path="/"
-            render={props => (
+            render={() => (
               <div>
                 <Home />
               </div>
@@ -44,7 +39,7 @@ function App(props) {
           <Route
             exact
             path="/about"
-            render={props => (
+            render={() => (
               <div>
                 <About />
               </div>
@@ -54,7 +49,7 @@ function App(props) {
           <Route
             exact
             path="/login"
-            render={props => (
+            render={() => (
               <div>
                 <LogIn />
               </div>
@@ -63,23 +58,17 @@ function App(props) {
           <Route
             exact
             path="/register"
-            render={props => (
+            render={() => (
               <div>
                 <Register />
               </div>
             )}
           />
-          <Route
-            exact
-            path="/main"
-            render={props => (
-              <div>
-                <Search />
-              </div>
-            )}
-          />
-
-         
+          <ProtectedRoute exact path="/main" authen={props.auth}>
+            <div>
+              <Search />
+            </div>
+          </ProtectedRoute>
         </Switch>
 
         <Footer />
@@ -92,4 +81,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, {fetchUser}) (App);
+export default connect(mapStateToProps, { fetchUser })(App);

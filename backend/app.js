@@ -90,21 +90,25 @@ codeSchema.index({
 const Code = conn2.model("Code", codeSchema);
 
 app.get("/", (req, res) => {
-  res.send("hello everyone");
 });
 
 app.get("/current_user", (req, res)=> {
-
   if (req.isAuthenticated()) {
-    req.send(req.user);
+    res.send(req.user);
   } else {
-   console.log("login　fail");
+    res.send(false);
+   console.log("not logging");
   }
 
 });
 
 app.get("/main", (req, res) => {
-  res.send("hello world");
+  if (req.isAuthenticated()) {
+    req.send(req.user);
+  } else {
+   console.log("not authenticated");
+  }
+
 });
 
 app.post("/api/search", (req, res) => {
@@ -185,13 +189,13 @@ app.get("/main", (req, res) => {
   }
 });
 
-app.post("/register", function(req, res){
+app.post("/register", (req, res)=>{
 
   User.register({username: req.body.username}, req.body.password, function(err, user){
     if (err) {
       console.log(err);
     } else {
-      passport.authenticate("local")(req, res, function(){
+      passport.authenticate("local")(req, res, ()=> {
         res.send(req.user);
       });
     }
@@ -211,7 +215,7 @@ app.post("/login", function(req, res){
     if (err) {
       console.log("there was an "+ err);
     } else {
-      passport.authenticate("local")(req, res, function(){
+      passport.authenticate("local")(req, res, ()=>{
         res.send(req.user);
       
       });
