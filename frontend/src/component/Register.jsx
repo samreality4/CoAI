@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Zoom, Fab } from "@material-ui/core";
 import { Form } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import {connect} from "react-redux"
-import {registerUser} from "../actions";
-import { withRouter } from 'react-router-dom';
-
+import { connect } from "react-redux";
+import { registerUser } from "../actions";
+import { withRouter } from "react-router-dom";
 
 function Register(props) {
   const [registerState, setRegisterState] = useState({
@@ -19,20 +18,15 @@ function Register(props) {
     setRegisterState(preVal => {
       return { ...preVal, [name]: value };
     });
-
-    console.log(registerState);
   }
-
-  
 
   function onRegister() {
     if (registerState.password === registerState.passwordConfirm) {
       props.registerUser(registerState, props.history);
     } else {
-      console.log(registerState);
       alert("password doesn't not match!");
-    };
-  };
+    }
+  }
 
   return (
     <div className="mt-5 text-center">
@@ -44,7 +38,11 @@ function Register(props) {
             <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
               <Card.Body>
                 <Form>
-                  <Form.Group onChange={onChange} value={registerState.userName} required>
+                  <Form.Group
+                    onChange={onChange}
+                    value={registerState.userName}
+                    required
+                  >
                     <label for="email">Email</label>
                     <input
                       type="email"
@@ -52,7 +50,11 @@ function Register(props) {
                       name="username"
                     />
                   </Form.Group>
-                  <Form.Group onChange={onChange} value={registerState.password} required>
+                  <Form.Group
+                    onChange={onChange}
+                    value={registerState.password}
+                    required
+                  >
                     <label for="password">Password</label>
                     <input
                       type="password"
@@ -62,7 +64,8 @@ function Register(props) {
                   </Form.Group>
                   <Form.Group
                     onChange={onChange}
-                    value={registerState.passwordConfirm} required
+                    value={registerState.passwordConfirm}
+                    required
                   >
                     <label for="password">Confirm Password</label>
                     <input
@@ -90,10 +93,8 @@ function Register(props) {
   );
 }
 
-function mapStateToProps({auth}) {
-
-  return {auth};
+function mapStateToProps({ auth }) {
+  return { auth };
 }
 
-
-export default withRouter(connect(mapStateToProps, {registerUser}) (Register));
+export default withRouter(connect(mapStateToProps, { registerUser })(Register));

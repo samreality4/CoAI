@@ -6,11 +6,7 @@ import Search from "./Search";
 import Register from "./Register";
 import About from "./About";
 import Home from "./Home";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchUser } from "../actions";
 import ProtectedRoute from "./ProtectedRoute";
@@ -18,7 +14,7 @@ import ProtectedRoute from "./ProtectedRoute";
 function App(props) {
   useEffect(() => {
     props.fetchUser();
-    // eslint-disable-next-line import/no-extraneous-dependencies
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

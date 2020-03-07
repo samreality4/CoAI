@@ -28,7 +28,6 @@ function AddCard(props) {
     axios
       .post("/api/add", form)
       .then(function(response) {
-        console.log(response);
         props.resetData();
       })
       .catch(function(error) {

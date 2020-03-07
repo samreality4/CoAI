@@ -6,13 +6,11 @@ import { connect } from "react-redux";
 import { resetData } from "../../actions";
 
 function DeleteCard(props) {
-
-  console.log(props.id);
   function handleYesClick() {
+    console.log(props.id);
     axios
-      .delete("/api/delete", props.id)
+      .post("/api/delete", { id: props.id })
       .then(function(response) {
-        console.log(response);
         props.resetData();
       })
       .catch(function(error) {
@@ -45,8 +43,8 @@ function DeleteCard(props) {
     </Modal>
   );
 }
-function mapStateToProps({ data}) {
-  return { data};
+function mapStateToProps({ data }) {
+  return { data };
 }
 
 export default connect(mapStateToProps, { resetData })(DeleteCard);

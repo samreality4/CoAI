@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 function Home(props) {
   switch (props.auth) {
     case null:
-      case false:
+    case false:
       return (
         <div>
           <header

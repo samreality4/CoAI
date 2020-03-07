@@ -27,7 +27,6 @@ function EditCard(props) {
     axios
       .put("/api/edit", form)
       .then(function(response) {
-        console.log(response);
         props.resetData();
       })
       .catch(function(error) {
@@ -126,8 +125,8 @@ function EditCard(props) {
     </Modal>
   );
 }
-function mapStateToProps({ data}) {
+function mapStateToProps({ data }) {
   return { data };
 }
 
-export default connect(mapStateToProps, {resetData })(EditCard);
+export default connect(mapStateToProps, { resetData })(EditCard);

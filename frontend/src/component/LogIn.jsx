@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Zoom, Fab } from "@material-ui/core";
 import { Form } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import {connect} from "react-redux"
-import {logInUser} from "../actions";
-import { withRouter } from 'react-router-dom';
+import { connect } from "react-redux";
+import { logInUser } from "../actions";
+import { withRouter } from "react-router-dom";
 
 function LogIn(props) {
   const [logInState, setLogInState] = useState({
@@ -21,10 +21,7 @@ function LogIn(props) {
 
   function onLogin() {
     props.logInUser(logInState, props.history);
-    
-}
-
-console.log("main" + props.auth);
+  }
 
   return (
     <div className="mt-5 text-center">
@@ -36,16 +33,24 @@ console.log("main" + props.auth);
             <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
               <Card.Body>
                 <Form>
-                  <Form.Group onChange={onChange} value={logInState.userName} required>
-                    <label for="email">Email</label>
+                  <Form.Group
+                    onChange={onChange}
+                    value={logInState.userName}
+                    required
+                  >
+                    <label>Email</label>
                     <input
                       type="email"
                       className="form-control"
                       name="username"
                     />
                   </Form.Group>
-                  <Form.Group onChange={onChange} value={logInState.password} required>
-                    <label for="password">Password</label>
+                  <Form.Group
+                    onChange={onChange}
+                    value={logInState.password}
+                    required
+                  >
+                    <label>Password</label>
                     <input
                       type="password"
                       className="form-control"
@@ -67,10 +72,8 @@ console.log("main" + props.auth);
   );
 }
 
-
-function mapStateToProps({auth}) {
-
-  return {auth};
+function mapStateToProps({ auth }) {
+  return { auth };
 }
 
-export default withRouter(connect(mapStateToProps, {logInUser})(LogIn));
+export default withRouter(connect(mapStateToProps, { logInUser })(LogIn));
