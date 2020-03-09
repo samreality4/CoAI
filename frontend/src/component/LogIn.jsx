@@ -24,52 +24,51 @@ function LogIn(props) {
   }
 
   return (
-    <Zoom>
-    <div className="mt-5 text-center">
-      <h1> Welcome! Sign in to get started!</h1>
-      <div className="container mt-5">
-        <h1>Login</h1>
-        <div className="row">
-          <div className="col-lg-4 col-md-6 mx-auto">
-            <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
-              <Card.Body>
-                <Form>
-                  <Form.Group
-                    onChange={onChange}
-                    value={logInState.userName}
-                    required
-                  >
-                    <label>Email</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      name="username"
-                    />
-                  </Form.Group>
-                  <Form.Group
-                    onChange={onChange}
-                    value={logInState.password}
-                    required
-                  >
-                    <label>Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      name="password"
-                    />
-                  </Form.Group>
-                  <Zoom in={true}>
+    <Zoom in={true}>
+      <div className="mt-5 text-center">
+        <h1> Welcome! Sign in to get started!</h1>
+        <div className="container mt-5">
+          <h1>Login</h1>
+          <div className="row">
+            <div className="col-lg-4 col-md-6 mx-auto">
+              <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
+                <Card.Body>
+                  <Form>
+                    <Form.Group
+                      onChange={onChange}
+                      value={logInState.userName}
+                      required
+                    >
+                      <label>Email</label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        name="username"
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      onChange={onChange}
+                      value={logInState.password}
+                      required
+                    >
+                      <label>Password</label>
+                      <input
+                        type="password"
+                        className="form-control"
+                        name="password"
+                      />
+                    </Form.Group>
+
                     <Fab onClick={onLogin} color="primary">
                       Login
                     </Fab>
-                  </Zoom>
-                </Form>
-              </Card.Body>
-            </Card>
+                  </Form>
+                </Card.Body>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </Zoom>
   );
 }
