@@ -29,6 +29,7 @@ function Register(props) {
   }
 
   return (
+    <Zoom>
     <div className="mt-5 text-center">
       <h1> Welcome! Register Today!</h1>
       <div className="container mt-5">
@@ -90,6 +91,7 @@ function Register(props) {
         </div>
       </div>
     </div>
+    </Zoom>
   );
 }
 

@@ -24,6 +24,7 @@ function LogIn(props) {
   }
 
   return (
+    <Zoom>
     <div className="mt-5 text-center">
       <h1> Welcome! Sign in to get started!</h1>
       <div className="container mt-5">
@@ -69,6 +70,7 @@ function LogIn(props) {
         </div>
       </div>
     </div>
+    </Zoom>
   );
 }
 
