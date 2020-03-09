@@ -20,7 +20,7 @@ function App(props) {
   return (
     <Router>
       <div>
-        <Header />
+        <Header/>
 
         <Switch>
           <Route

@@ -3,9 +3,9 @@ import NavBar from "./NavBar";
 
 function Header() {
   return (
-    <div>
+    <header className="sticky-top">
       <NavBar />
-    </div>
+    </header>
   );
 }
 
