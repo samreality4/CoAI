@@ -1,3 +1,5 @@
+const baseUrl = "/api";
+
 module.exports = (app, Code) => {
   app.get("/main", (req, res) => {
     if (req.isAuthenticated()) {
@@ -7,7 +9,7 @@ module.exports = (app, Code) => {
     }
   });
 
-  app.post("/api/search", (req, res) => {
+  app.post(`${baseUrl}/search`, (req, res) => {
     console.log(req.body.text);
     Code.find(
       {
@@ -26,7 +28,7 @@ module.exports = (app, Code) => {
     );
   });
 
-  app.post("/api/add", (req, res) => {
+  app.post(`${baseUrl}/add`, (req, res) => {
     const code = new Code({
       question: req.body.question,
       projectUrl: req.body.projectUrl,
@@ -44,7 +46,7 @@ module.exports = (app, Code) => {
     });
   });
 
-  app.put("/api/edit", (req, res) => {
+  app.put(`${baseUrl}/edit`, (req, res) => {
     Code.update(
       { _id: req.body.id },
       {
@@ -66,7 +68,7 @@ module.exports = (app, Code) => {
     );
   });
 
-  app.post("/api/delete", (req, res) => {
+  app.post(`${baseUrl}/delete`, (req, res) => {
     Code.deleteOne({ _id: req.body.id }, err => {
       if (err) {
         res.send("Unable to delete.  Please try again later.");
