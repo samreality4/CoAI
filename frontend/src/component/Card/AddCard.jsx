@@ -6,9 +6,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { resetData } from "../../actions";
 
-
 function AddCard(props) {
-
   const [form, setForm] = useState({
     question: String,
     keyword: String,
@@ -33,10 +31,8 @@ function AddCard(props) {
       .catch(function(error) {
         console.log(error);
       });
-    props.clickfunction()
-    
+    props.clickfunction();
   }
-
 
   return (
     <Modal show={props.clickstate} size="lg">
@@ -48,7 +44,6 @@ function AddCard(props) {
           <Form action="/" method="post">
             <Form.Group controlId="formGridIssue">
               <Form.Label>What was the issue?</Form.Label>
-
               <Form.Control
                 onChange={onChange}
                 name="question"
@@ -70,7 +65,6 @@ function AddCard(props) {
             <Form.Row>
               <Form.Group as={Col} controlId="formGridUrl">
                 <Form.Label>Project Url</Form.Label>
-
                 <Form.Control
                   onChange={onChange}
                   name="projectUrl"
@@ -79,7 +73,6 @@ function AddCard(props) {
                   placeholder="Enter github url"
                 />
               </Form.Group>
-
               <Form.Group as={Col} controlId="formGridLanguage">
                 <Form.Label>Language</Form.Label>
                 <Form.Control
@@ -90,7 +83,7 @@ function AddCard(props) {
                   className="option"
                 >
                   <option disabled selected value>
-                    -- select an option --
+                    -- Select An Option --
                   </option>
                   <option>None</option>
                   <option>Javascript</option>
@@ -113,16 +106,13 @@ function AddCard(props) {
               />
             </Form.Group>
 
-            <Fab
-              onClick={onSubmit}
-              variant="primary"
-              color="primary"
-            >
+            <Fab onClick={onSubmit} variant="primary" color="primary">
               Submit
             </Fab>
           </Form>
         </Container>
       </Modal.Body>
+
       <Modal.Footer>
         <Fab color="secondary" onClick={props.clickfunction}>
           Close
@@ -133,9 +123,7 @@ function AddCard(props) {
 }
 
 function mapStateToProps({ data }) {
-  return { data};
+  return { data };
 }
 
 export default connect(mapStateToProps, { resetData })(AddCard);
-
-

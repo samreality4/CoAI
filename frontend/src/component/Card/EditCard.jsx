@@ -41,12 +41,12 @@ function EditCard(props) {
       <Modal.Header>
         <Modal.Title className="header">Edit Entry</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
         <Container>
           <Form action="/" method="post">
             <Form.Group controlId="formGridIssue">
               <Form.Label>What was the issue?</Form.Label>
-
               <Form.Control
                 onChange={onChange}
                 name="question"
@@ -68,7 +68,6 @@ function EditCard(props) {
             <Form.Row>
               <Form.Group as={Col} controlId="formGridUrl">
                 <Form.Label>Project Url</Form.Label>
-
                 <Form.Control
                   onChange={onChange}
                   name="projectUrl"
@@ -117,6 +116,7 @@ function EditCard(props) {
           </Form>
         </Container>
       </Modal.Body>
+
       <Modal.Footer>
         <Fab color="secondary" onClick={props.handleclick}>
           Close
