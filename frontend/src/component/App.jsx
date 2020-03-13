@@ -20,7 +20,7 @@ function App(props) {
   return (
     <Router>
       <div>
-        <Header/>
+        <Header />
 
         <Switch>
           <Route
@@ -51,6 +51,7 @@ function App(props) {
               </div>
             )}
           />
+
           <Route
             exact
             path="/register"
@@ -60,6 +61,7 @@ function App(props) {
               </div>
             )}
           />
+
           <ProtectedRoute exact path="/main" authen={props.auth}>
             <div>
               <Search />

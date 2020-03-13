@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { fetchData } from "../actions";
 import { resetData } from "../actions";
 
+
 function Search(props) {
   useEffect(() => {
     props.resetData();

@@ -89,11 +89,11 @@ function EditCard(props) {
                   <option disabled selected value>
                     -- select an option --
                   </option>
-                  <option>None</option>
-                  <option>Javascript</option>
-                  <option>Kotlin</option>
-                  <option>Swift</option>
-                  <option>Java</option>
+                  <option>none</option>
+                  <option>javascript</option>
+                  <option>kotlin</option>
+                  <option>swift</option>
+                  <option>java</option>
                 </Form.Control>
               </Form.Group>
             </Form.Row>

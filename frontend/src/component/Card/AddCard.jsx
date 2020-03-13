@@ -32,6 +32,11 @@ function AddCard(props) {
         console.log(error);
       });
     props.clickfunction();
+    setForm({question: String,
+      keyword: String,
+      projectUrl: String,
+      language: String,
+      code: String})
   }
 
   return (
@@ -85,11 +90,11 @@ function AddCard(props) {
                   <option disabled selected value>
                     -- Select An Option --
                   </option>
-                  <option>None</option>
-                  <option>Javascript</option>
-                  <option>Kotlin</option>
-                  <option>Swift</option>
-                  <option>Java</option>
+                  <option>none</option>
+                  <option>javascript</option>
+                  <option>kotlin</option>
+                  <option>swift</option>
+                  <option>java</option>
                 </Form.Control>
               </Form.Group>
             </Form.Row>

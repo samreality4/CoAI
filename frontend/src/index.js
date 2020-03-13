@@ -6,12 +6,15 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reducers from "./reducers";
 import reduxThunk from "redux-thunk";
+import { SnackbarProvider } from "notistack";
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <SnackbarProvider maxSnack={1}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </SnackbarProvider>,
   document.getElementById("root")
 );

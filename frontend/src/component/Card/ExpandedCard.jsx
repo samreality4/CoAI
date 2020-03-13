@@ -7,6 +7,8 @@ import EditIcon from "@material-ui/icons/Edit";
 import EditCard from "./EditCard";
 import { useState } from "react";
 import DeleteCard from "./DeleteCard";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 function ExpandedCard(props) {
   const [editState, setEditState] = useState(false);
@@ -19,7 +21,7 @@ function ExpandedCard(props) {
   function handleDeleteClick() {
     setDeleteState(!deleteState);
   }
-
+console.log(props.cardprops.language)
   return (
     <div>
       <Modal size="xl" show={props.clickstate} onHide={props.handleclick}>
@@ -44,7 +46,9 @@ function ExpandedCard(props) {
             <Card.Title>Keywords</Card.Title>
             <Card.Text>{props.cardprops.keyword}</Card.Text>
             <Card.Title>Solution Code</Card.Title>
-            <Card.Text>{props.cardprops.code}</Card.Text>
+            <SyntaxHighlighter language={props.cardprops.language} style={atomDark}>
+            {props.cardprops.code}
+            </SyntaxHighlighter>
           </Card.Body>
         </Card>
 

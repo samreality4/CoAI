@@ -14,6 +14,8 @@ module.exports = (app, User) => {
     User.register({ username: req.body.username }, req.body.password, err => {
       if (err) {
         console.log(err);
+        console.log(err.statusCode);
+        res.status(400).json("user already exists");
       } else {
         passport.authenticate("local")(req, res, () => {
           res.send(req.user);
@@ -30,7 +32,7 @@ module.exports = (app, User) => {
 
     req.login(user, err => {
       if (err) {
-        console.log("there was an " + err);
+        console.log(err);
       } else {
         passport.authenticate("local")(req, res, () => {
           res.send(req.user);

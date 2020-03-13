@@ -13,8 +13,8 @@ function OneCard(props) {
   }
 
   return (
-    <Grow in={true} {...({timeout: 1000})}>
-      <div>
+    <div>
+      <Grow in={true} {...{ timeout: 1000 }}>
         <CardActionArea onClick={handleClick}>
           <Card
             key={props.id}
@@ -24,7 +24,6 @@ function OneCard(props) {
             style={{ width: "20rem" }}
           >
             <Card.Header as="h5">{props.language}</Card.Header>
-
             <Card.Body>
               <Card.Text>{props.question}</Card.Text>
               <Card.Text>
@@ -33,14 +32,13 @@ function OneCard(props) {
             </Card.Body>
           </Card>
         </CardActionArea>
-        
-        <ExpandedCard
-          clickstate={clickState}
-          cardprops={props}
-          handleclick={handleClick}
-        />
-      </div>
-    </Grow>
+      </Grow>
+      <ExpandedCard
+        clickstate={clickState}
+        cardprops={props}
+        handleclick={handleClick}
+      />
+    </div>
   );
 }
 

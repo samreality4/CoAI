@@ -20,7 +20,6 @@ module.exports = (app, Code) => {
       (err, result) => {
         if (err) {
           console.log(err);
-          res.send("Unable to search.  Please try again later.");
         } else {
           res.send(result);
         }
@@ -39,7 +38,6 @@ module.exports = (app, Code) => {
     code.save(err => {
       if (err) {
         console.log(err);
-        res.send("Unable to save. Please try again later.");
       } else {
         res.send("successfully added");
       }
@@ -62,7 +60,6 @@ module.exports = (app, Code) => {
           res.send("successfully updated!");
         } else {
           console.log(err);
-          res.send("Unble to update.  Please try again later.");
         }
       }
     );
@@ -71,9 +68,8 @@ module.exports = (app, Code) => {
   app.post(`${baseUrl}/delete`, (req, res) => {
     Code.deleteOne({ _id: req.body.id }, err => {
       if (err) {
-        res.send("Unable to delete.  Please try again later.");
+        console.log(err);
       } else {
-        console.log(req.body);
         res.send("successfully deleted");
       }
     });

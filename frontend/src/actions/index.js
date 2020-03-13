@@ -5,7 +5,7 @@ import {
   FETCH_USER,
   LOGOUT_USER,
   FETCH_DATA,
-  RESET_DATA
+  RESET_DATA,
 } from "./types";
 
 export const fetchUser = () => async dispatch => {
@@ -27,13 +27,13 @@ export const logInUser = (login, history) => async dispatch => {
   }
 };
 
-export const registerUser = (register, history) => async dispatch => {
+export const registerUser = (register, history, enqueueSnackbar) => async dispatch => {
   try {
     const res = await axios.post("/register", register);
     dispatch({ type: REGISTER_USER, payload: res.data });
     history.push("/main");
   } catch (err) {
-    console.log(err);
+    enqueueSnackbar(err.response.data, {variant: "error"});
   }
 };
 
@@ -47,7 +47,7 @@ export const logOutUser = history => async dispatch => {
   }
 };
 
-export const fetchData = input => async dispatch => {
+export const fetchData = (input) => async dispatch => {
   try {
     const res = await axios.post("/api/search", { text: input });
     dispatch({ type: FETCH_DATA, payload: res.data });
