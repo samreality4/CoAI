@@ -24,6 +24,7 @@ function OneCard(props) {
             style={{ width: "20rem" }}
           >
             <Card.Header as="h5">{props.language}</Card.Header>
+
             <Card.Body>
               <Card.Text>{props.question}</Card.Text>
               <Card.Text>
@@ -32,6 +33,7 @@ function OneCard(props) {
             </Card.Body>
           </Card>
         </CardActionArea>
+        
         <ExpandedCard
           clickstate={clickState}
           cardprops={props}

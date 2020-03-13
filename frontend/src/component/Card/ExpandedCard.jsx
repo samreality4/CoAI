@@ -26,6 +26,7 @@ function ExpandedCard(props) {
         <Modal.Header closeButton>
           <h1>{props.cardprops.language}</h1>
         </Modal.Header>
+
         <Card
           id={props.cardprops.id}
           className="shadow mx-auto col-auto"
@@ -46,6 +47,7 @@ function ExpandedCard(props) {
             <Card.Text>{props.cardprops.code}</Card.Text>
           </Card.Body>
         </Card>
+
         <Modal.Footer className="container d-flex p-1">
           <Fab className="mr-4" onClick={handleEditClick} color="primary">
             <EditIcon />
