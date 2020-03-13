@@ -48,7 +48,6 @@ export const logOutUser = history => async dispatch => {
 };
 
 export const fetchData = input => async dispatch => {
-  console.log(input);
   try {
     const res = await axios.post("/api/search", { text: input });
     dispatch({ type: FETCH_DATA, payload: res.data });

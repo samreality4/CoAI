@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import { connect } from "react-redux";
 import { logInUser } from "../actions";
 import { withRouter } from "react-router-dom";
+import GoogleAuth from "./GoogleAuth";
 
 function LogIn(props) {
   const [logInState, setLogInState] = useState({
@@ -65,6 +66,7 @@ function LogIn(props) {
                   </Form>
                 </Card.Body>
               </Card>
+<GoogleAuth/>
             </div>
           </div>
         </div>
