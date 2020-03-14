@@ -1,4 +1,5 @@
 const passport = require("passport");
+const HttpStatus = require("http-status-codes");
 
 module.exports = (app, User) => {
   app.get("/current_user", (req, res) => {
@@ -14,9 +15,7 @@ module.exports = (app, User) => {
     User.register({ username: req.body.username }, req.body.password, err => {
       if (err) {
         console.log(err);
-        console.log(err.statusCode);
-        res.status(400).json("user already exists.");
-        res.status(500).json("Server error, please try again laster.");
+        res.status(HttpStatus.BAD_REQUEST).json("User already exist");
       } else {
         passport.authenticate("local")(req, res, () => {
           res.send(req.user);
@@ -34,7 +33,9 @@ module.exports = (app, User) => {
     req.login(user, err => {
       if (err) {
         console.log(err);
-        res.status(500).json("Server error, please try again laster.");
+        res
+          .status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .json("Login error.  Please try again later.");
       } else {
         passport.authenticate("local")(req, res, () => {
           res.send(req.user);
