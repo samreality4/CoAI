@@ -30,14 +30,14 @@ const conn1 = mongoose.createConnection(process.env.MONGO_KEY1, {
   useUnifiedTopology: true
 });
 
-const conn2 = mongoose.createConnection(process.env.MONGO_KEY2, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-
 conn1.on("error", console.error.bind(console, "connection err:"));
 conn1.once("open", () => {
   console.log("we are connected on userdb!");
+});
+
+const conn2 = mongoose.createConnection(process.env.MONGO_KEY2, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 conn2.on("error", console.error.bind(console, "connection err:"));
@@ -68,6 +68,8 @@ passport.deserializeUser((id, done) => {
     done(err, user);
   });
 });
+
+//Code Collection Related//
 
 const codeSchema = new mongoose.Schema({
   question: String,

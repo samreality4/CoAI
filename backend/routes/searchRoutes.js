@@ -5,7 +5,7 @@ module.exports = (app, Code) => {
     if (req.isAuthenticated()) {
       req.send(req.user);
     } else {
-      console.log("not authenticated");
+      console.log("not authenticated.");
     }
   });
 
@@ -20,6 +20,7 @@ module.exports = (app, Code) => {
       (err, result) => {
         if (err) {
           console.log(err);
+          res.status(500).json("Search unavailable, please try again later.");
         } else {
           res.send(result);
         }
@@ -38,8 +39,9 @@ module.exports = (app, Code) => {
     code.save(err => {
       if (err) {
         console.log(err);
+        res.status(500).json("Cannot add, please try again later.");
       } else {
-        res.send("successfully added");
+        res.send("successfully added!");
       }
     });
   });
@@ -60,6 +62,7 @@ module.exports = (app, Code) => {
           res.send("successfully updated!");
         } else {
           console.log(err);
+          res.status(500).json("Cannot update, please try again later.");
         }
       }
     );
@@ -69,8 +72,9 @@ module.exports = (app, Code) => {
     Code.deleteOne({ _id: req.body.id }, err => {
       if (err) {
         console.log(err);
+        res.status(500).json("Cannot delete, please try again later.");
       } else {
-        res.send("successfully deleted");
+        res.send("successfully deleted!");
       }
     });
   });

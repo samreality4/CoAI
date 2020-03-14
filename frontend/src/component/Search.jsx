@@ -9,6 +9,7 @@ import Cards from "./Card/Cards";
 import { connect } from "react-redux";
 import { fetchData } from "../actions";
 import { resetData } from "../actions";
+import { useSnackbar } from "notistack";
 
 
 function Search(props) {
@@ -17,6 +18,8 @@ function Search(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const [searchState, setSearchState] = useState("");
 
   function onChange(e) {
@@ -24,7 +27,7 @@ function Search(props) {
   }
 
   function getList(e) {
-    props.fetchData(searchState);
+    props.fetchData(searchState, enqueueSnackbar);
   }
 
   const [clickState, setClickState] = useState(false);

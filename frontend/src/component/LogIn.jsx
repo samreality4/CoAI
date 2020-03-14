@@ -5,9 +5,11 @@ import Card from "react-bootstrap/Card";
 import { connect } from "react-redux";
 import { logInUser } from "../actions";
 import { withRouter } from "react-router-dom";
-
+import { useSnackbar } from "notistack";
 
 function LogIn(props) {
+  const { enqueueSnackbar } = useSnackbar();
+
   const [logInState, setLogInState] = useState({
     userName: String,
     password: String
@@ -21,7 +23,7 @@ function LogIn(props) {
   }
 
   function onLogin() {
-    props.logInUser(logInState, props.history);
+    props.logInUser(logInState, props.history, enqueueSnackbar);
   }
 
   return (

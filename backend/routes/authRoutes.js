@@ -6,7 +6,7 @@ module.exports = (app, User) => {
       res.send(req.user);
     } else {
       res.send(false);
-      console.log("not logging");
+      console.log("not logged in!");
     }
   });
 
@@ -15,7 +15,8 @@ module.exports = (app, User) => {
       if (err) {
         console.log(err);
         console.log(err.statusCode);
-        res.status(400).json("user already exists");
+        res.status(400).json("user already exists.");
+        res.status(500).json("Server error, please try again laster.");
       } else {
         passport.authenticate("local")(req, res, () => {
           res.send(req.user);
@@ -33,6 +34,7 @@ module.exports = (app, User) => {
     req.login(user, err => {
       if (err) {
         console.log(err);
+        res.status(500).json("Server error, please try again laster.");
       } else {
         passport.authenticate("local")(req, res, () => {
           res.send(req.user);
