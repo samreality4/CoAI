@@ -80,11 +80,4 @@ module.exports = (app, Code) => {
     });
   });
 
-  app.get("/main", (req, res) => {
-    if (req.isAuthenticated()) {
-      console.log("authenticated");
-    } else {
-      console.log("login fail");
-    }
-  });
 };
