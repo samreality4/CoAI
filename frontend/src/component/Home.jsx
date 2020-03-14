@@ -5,14 +5,17 @@ import { Redirect } from "react-router-dom";
 
 function Home(props) {
   switch (props.auth) {
-    case null:
-    case false:
+    case true:
+      return <Redirect to="/main" />;
+    default:
       return (
         <div>
           <header
-           
             className="text-white"
-            style={{ height: "25rem", backgroundImage: `url(${"/images/banner.jpg"})` }}
+            style={{
+              height: "25rem",
+              backgroundImage: `url(${"/images/banner.jpg"})`
+            }}
           >
             <Zoom in={true}>
               <div className="row col-md-6 text-center m-auto p-5">
@@ -38,8 +41,6 @@ function Home(props) {
           </div>
         </div>
       );
-    default:
-      return <Redirect to="/main" />;
   }
 }
 

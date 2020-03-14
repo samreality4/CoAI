@@ -14,8 +14,21 @@ function NavBar(props) {
   console.log(props.auth);
   function renderContent() {
     switch (props.auth) {
-      case null:
-      case false:
+      case true:
+        return (
+          <Nav>
+            <Link to="/logout" className="nav-link">
+              <Button onClick={onLogOut} variant="contained" color="secondary">
+                logout
+              </Button>
+            </Link>
+            <Link className="nav-link" to="/about">
+              <Button variant="contained">About Me</Button>
+            </Link>
+          </Nav>
+        );
+
+      default:
         return (
           <Nav>
             <Link to="/login" className="nav-link">
@@ -26,19 +39,6 @@ function NavBar(props) {
             <Link to="/register" className="nav-link">
               <Button variant="contained" color="secondary">
                 Register
-              </Button>
-            </Link>
-            <Link className="nav-link" to="/about">
-              <Button variant="contained">About Me</Button>
-            </Link>
-          </Nav>
-        );
-      default:
-        return (
-          <Nav>
-            <Link to="/logout" className="nav-link">
-              <Button onClick={onLogOut} variant="contained" color="secondary">
-                logout
               </Button>
             </Link>
             <Link className="nav-link" to="/about">

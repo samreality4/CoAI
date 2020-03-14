@@ -4,7 +4,7 @@ const HttpStatus = require("http-status-codes");
 module.exports = (app, User) => {
   app.get("/current_user", (req, res) => {
     if (req.isAuthenticated()) {
-      res.send(req.user);
+      res.send(true);
     } else {
       res.send(false);
       console.log("not logged in!");
@@ -18,7 +18,7 @@ module.exports = (app, User) => {
         res.status(HttpStatus.BAD_REQUEST).json("User already exist");
       } else {
         passport.authenticate("local")(req, res, () => {
-          res.send(req.user);
+          res.send(true);
         });
       }
     });
@@ -38,7 +38,7 @@ module.exports = (app, User) => {
           .json("Login error.  Please try again later.");
       } else {
         passport.authenticate("local")(req, res, () => {
-          res.send(req.user);
+          res.send(true);
         });
       }
     });

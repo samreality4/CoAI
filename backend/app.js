@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
+const path = require('path');
 
 const app = express();
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+// app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(
   session({
@@ -23,6 +25,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 mongoose.set("useCreateIndex", true);
 const conn1 = mongoose.createConnection(process.env.MONGO_KEY1, {
@@ -88,6 +91,10 @@ codeSchema.index({
 });
 
 const Code = conn2.model("Code", codeSchema);
+
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 require("./routes/searchRoutes")(app, Code);
 require("./routes/authRoutes")(app, User);

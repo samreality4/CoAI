@@ -7,10 +7,10 @@ function ProtectedRoute({ children, authen, ...rest }) {
       {...rest}
       render={() => {
         switch (authen) {
-          case false:
-            return <Redirect to="/login" />;
-          default:
+          case true:
             return children;
+          default:
+            return <Redirect to="/login" />;
         }
       }}
     />
