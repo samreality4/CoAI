@@ -9,11 +9,11 @@ function About() {
         className="container col-md-8 col-sm-10 shadow mx-auto text-white p-1"
       >
         <Card.Img
-          src="https://www.thespruce.com/thmb/l5NVzCxIZIi7gHl_2fAh3WGzJ_I=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/basketball-court-852678264-5be780a446e0fb0026ebd1e3.jpg"
+          src="/images/basketball.png"
           alt="Card image"
         />
         <Card.ImgOverlay>
-          <Card.Body>
+          <Card.Body className="p-2">
             <Card.Title>About Me</Card.Title>
             <Card.Text>
               Hi! My name is Sam! I have learned how to web develop from

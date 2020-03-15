@@ -11,7 +11,7 @@ function NavBar(props) {
   function onLogOut() {
     props.logOutUser(props.history);
   }
-  console.log(props.auth);
+  
   function renderContent() {
     switch (props.auth) {
       case true:

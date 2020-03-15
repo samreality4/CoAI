@@ -9,11 +9,12 @@ function Home(props) {
       return <Redirect to="/main" />;
     default:
       return (
-        <div>
+        <div className="container mw-100">
+          <div className="row">
           <header
-            className="text-white"
+            className="text-white col-xl-12"
             style={{
-              height: "25rem",
+              height:"19rem",
               backgroundImage: `url(${"/images/banner.jpg"})`
             }}
           >
@@ -26,19 +27,22 @@ function Home(props) {
             </Zoom>
           </header>
           <div>
-            <Zoom in={true}>
-              <div className="row col-md-6 m-auto p-5">
-                <h1>About CoAI</h1>
-                <p>
-                  CoAI is a personal helper tool for any coder out there that
-                  needs extra solution recalling. It searches solution codes
-                  based on saved keywords, titles, and project name. Don't let
-                  those hours of stackflowing and googling go to waste. Store
-                  them in CoAI now!
-                </p>
-              </div>
-            </Zoom>
+            <div className="col-xl-12">
+              <Zoom in={true}>
+                <div className="row col-md-6 m-auto p-5">
+                  <h1>About CoAI</h1>
+                  <p>
+                    CoAI is a personal helper tool for any coder out there that
+                    needs extra solution recalling. It searches solution codes
+                    based on saved keywords, titles, and project name. Don't let
+                    those hours of stackflowing and googling go to waste. Store
+                    them in CoAI now!
+                  </p>
+                </div>
+              </Zoom>
+            </div>
           </div>
+        </div>
         </div>
       );
   }
