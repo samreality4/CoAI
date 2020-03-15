@@ -5,15 +5,11 @@ import { Zoom } from "@material-ui/core";
 function About() {
   return (
     <Zoom in={true}>
-      <Card
-        className="container col-md-8 col-sm-10 shadow mx-auto text-white p-1"
-      >
-        <Card.Img
-          src="/images/basketball.png"
-          alt="Card image"
-        />
+      <Card className="container col-md-8 col-sm-10 shadow mx-auto text-white p-1">
+        <Card.Img src="/images/basketball.png" alt="Card image" />
+
         <Card.ImgOverlay>
-          <Card.Body className="p-2">
+          <Card.Body className="about p-2">
             <Card.Title>About Me</Card.Title>
             <Card.Text>
               Hi! My name is Sam! I have learned how to web develop from

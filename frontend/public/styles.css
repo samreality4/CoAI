@@ -21,3 +21,15 @@ body {
     height: 100%;
     background-image: url('../images/cubes.png');
 }
+
+@media screen and (max-width: 500px) {
+  .about {
+    font-size: .8rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .about {
+    font-size: .7rem;
+  }
+}
