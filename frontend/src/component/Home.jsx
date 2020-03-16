@@ -12,7 +12,7 @@ function Home(props) {
         <div className="container mw-100">
           <div className="row">
           <header
-            className="text-white col-xl-12"
+            className="text-white col-sm-12"
             style={{
               height:"19rem",
               backgroundImage: `url(${"/images/banner.jpg"})`
@@ -27,7 +27,7 @@ function Home(props) {
             </Zoom>
           </header>
           <div>
-            <div className="col-xl-12">
+            <div className="col-sm-12">
               <Zoom in={true}>
                 <div className="row col-md-6 m-auto p-5">
                   <h1>About CoAI</h1>

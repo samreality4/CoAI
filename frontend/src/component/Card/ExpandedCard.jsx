@@ -7,8 +7,8 @@ import EditIcon from "@material-ui/icons/Edit";
 import EditCard from "./EditCard";
 import { useState } from "react";
 import DeleteCard from "./DeleteCard";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 function ExpandedCard(props) {
   const [editState, setEditState] = useState(false);
@@ -38,15 +38,22 @@ function ExpandedCard(props) {
             <Card.Text>{props.cardprops.question}</Card.Text>
             <Card.Title>Github Link</Card.Title>
             <Card.Text>
-              <a href={props.cardprops.projecturl}>
+              <a
+                href={props.cardprops.projecturl}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 {props.cardprops.projecturl}
               </a>
             </Card.Text>
             <Card.Title>Keywords</Card.Title>
             <Card.Text>{props.cardprops.keyword}</Card.Text>
             <Card.Title>Solution Code</Card.Title>
-            <SyntaxHighlighter language={props.cardprops.codeLanguage} style={atomDark}>
-            {props.cardprops.code}
+            <SyntaxHighlighter
+              language={props.cardprops.codeLanguage}
+              style={atomDark}
+            >
+              {props.cardprops.code}
             </SyntaxHighlighter>
           </Card.Body>
         </Card>

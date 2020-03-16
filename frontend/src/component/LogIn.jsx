@@ -40,25 +40,27 @@ function LogIn(props) {
                     <Form.Group
                       onChange={onChange}
                       value={logInState.userName}
-                      required
+                   
                     >
                       <label>Email</label>
                       <input
                         type="email"
                         className="form-control"
                         name="username"
+                        required
                       />
                     </Form.Group>
                     <Form.Group
                       onChange={onChange}
                       value={logInState.password}
-                      required
+              
                     >
                       <label>Password</label>
                       <input
                         type="password"
                         className="form-control"
                         name="password"
+                        required
                       />
                     </Form.Group>
 

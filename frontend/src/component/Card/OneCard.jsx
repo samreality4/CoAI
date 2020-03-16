@@ -27,7 +27,13 @@ function OneCard(props) {
             <Card.Body>
               <Card.Text>{props.question}</Card.Text>
               <Card.Text>
-                <a href={props.projecturl}>{props.projecturl}</a>
+                <a
+                  href={props.projecturl}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {props.projecturl}
+                </a>
               </Card.Text>
             </Card.Body>
           </Card>
