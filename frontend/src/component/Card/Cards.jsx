@@ -10,7 +10,7 @@ function Cards(props) {
             <OneCard
               key={item._id}
               id={item._id}
-              language={item.codeLanguage}
+              codeLanguage={item.codeLanguage}
               question={item.question}
               projecturl={item.projectUrl}
               keyword={item.keyword}

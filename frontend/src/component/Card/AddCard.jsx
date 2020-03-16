@@ -11,7 +11,7 @@ function AddCard(props) {
     question: String,
     keyword: String,
     projectUrl: String,
-    language: String,
+    codeLanguage: String,
     code: String
   });
 
@@ -32,16 +32,18 @@ function AddCard(props) {
         console.log(error);
       });
     props.clickfunction();
-    setForm({question: String,
+    setForm({
+      question: String,
       keyword: String,
       projectUrl: String,
-      language: String,
-      code: String})
+      codeLanguage: String,
+      code: String
+    });
   }
 
   return (
-    <Modal show={props.clickstate} size="lg">
-      <Modal.Header>
+    <Modal show={props.clickstate} onHide={props.clickfunction} size="lg">
+      <Modal.Header closeButton>
         <Modal.Title className="header">Add a new entry</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -82,8 +84,8 @@ function AddCard(props) {
                 <Form.Label>Language</Form.Label>
                 <Form.Control
                   onChange={onChange}
-                  name="language"
-                  value={form.language}
+                  name="codeLanguage"
+                  value={form.codeLanguage}
                   as="select"
                   className="option"
                 >

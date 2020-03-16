@@ -12,7 +12,7 @@ function EditCard(props) {
     question: props.cardprops.question,
     keyword: props.cardprops.keyword,
     projectUrl: props.cardprops.projecturl,
-    language: props.cardprops.language,
+    codeLanguage: props.cardprops.codeLanguage,
     code: props.cardprops.code
   });
 
@@ -81,8 +81,8 @@ function EditCard(props) {
                 <Form.Label>Language</Form.Label>
                 <Form.Control
                   onChange={onChange}
-                  name="language"
-                  value={form.language}
+                  name="codeLanguage"
+                  value={form.codeLanguage}
                   as="select"
                   className="option"
                 >

@@ -4,7 +4,7 @@ const HttpStatus = require("http-status-codes");
 module.exports = (app, Code) => {
   app.get("/main", (req, res) => {
     if (req.isAuthenticated()) {
-      req.send(req.user);
+      req.send(true);
     } else {
       console.log("not authenticated.");
     }
@@ -21,7 +21,9 @@ module.exports = (app, Code) => {
       (err, result) => {
         if (err) {
           console.log(err);
-          res.status(HttpStatus.INTERNAL_SERVER_ERROR).json("Search not available. Please try again later.");
+          res
+            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .json("Search not available. Please try again later.");
         } else {
           res.send(result);
         }
@@ -34,13 +36,15 @@ module.exports = (app, Code) => {
       question: req.body.question,
       projectUrl: req.body.projectUrl,
       keyword: req.body.keyword,
-      codeLanguage: req.body.language,
+      codeLanguage: req.body.codeLanguage,
       code: req.body.code
     });
     code.save(err => {
       if (err) {
         console.log(err);
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).json("Add not available. Please try again later.");
+        res
+          .status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .json("Add not available. Please try again later.");
       } else {
         res.send("successfully added!");
       }
@@ -54,14 +58,16 @@ module.exports = (app, Code) => {
         question: req.body.question,
         projectUrl: req.body.projectUrl,
         keyword: req.body.keyword,
-        codeLanguage: req.body.language,
+        codeLanguage: req.body.codeLanguage,
         code: req.body.code
       },
       { overwrite: true },
       err => {
         if (err) {
           console.log(err);
-          res.status(HttpStatus.INTERNAL_SERVER_ERROR).json("Edit not available. Please try again later.");
+          res
+            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .json("Edit not available. Please try again later.");
         } else {
           res.send("successfully updated!");
         }
@@ -73,11 +79,12 @@ module.exports = (app, Code) => {
     Code.deleteOne({ _id: req.body.id }, err => {
       if (err) {
         console.log(err);
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).json("Edit not available. Please try again later.");
+        res
+          .status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .json("Edit not available. Please try again later.");
       } else {
         res.send("successfully deleted!");
       }
     });
   });
-
 };

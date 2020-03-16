@@ -23,7 +23,7 @@ function OneCard(props) {
             text="black"
             style={{ width: "20rem" }}
           >
-            <Card.Header as="h5">{props.language}</Card.Header>
+            <Card.Header as="h5">{props.codeLanguage}</Card.Header>
             <Card.Body>
               <Card.Text>{props.question}</Card.Text>
               <Card.Text>

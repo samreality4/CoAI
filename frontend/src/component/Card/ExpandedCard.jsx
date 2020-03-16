@@ -21,12 +21,11 @@ function ExpandedCard(props) {
   function handleDeleteClick() {
     setDeleteState(!deleteState);
   }
-console.log(props.cardprops.language)
   return (
     <div>
       <Modal size="xl" show={props.clickstate} onHide={props.handleclick}>
         <Modal.Header closeButton>
-          <h1>{props.cardprops.language}</h1>
+          <h1>{props.cardprops.codeLanguage}</h1>
         </Modal.Header>
 
         <Card
@@ -46,7 +45,7 @@ console.log(props.cardprops.language)
             <Card.Title>Keywords</Card.Title>
             <Card.Text>{props.cardprops.keyword}</Card.Text>
             <Card.Title>Solution Code</Card.Title>
-            <SyntaxHighlighter language={props.cardprops.language} style={atomDark}>
+            <SyntaxHighlighter language={props.cardprops.codeLanguage} style={atomDark}>
             {props.cardprops.code}
             </SyntaxHighlighter>
           </Card.Body>

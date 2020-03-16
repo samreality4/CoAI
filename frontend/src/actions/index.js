@@ -12,6 +12,7 @@ export const fetchUser = () => async dispatch => {
   try {
     const res = await axios.get("/current_user");
     dispatch({ type: FETCH_USER, payload: res.data });
+    console.log(res.data);
   } catch (err) {
     console.log(err);
   }
