@@ -89,7 +89,7 @@ function AddCard(props) {
                   as="select"
                   className="option"
                 >
-                  <option disabled selected value>
+                  <option disabled defaultValue value>
                     -- Select An Option --
                   </option>
                   <option>none</option>
@@ -113,7 +113,7 @@ function AddCard(props) {
               />
             </Form.Group>
 
-            <Fab onClick={onSubmit} variant="primary" color="primary">
+            <Fab onClick={onSubmit} variant="extended" color="primary">
               Submit
             </Fab>
           </Form>
