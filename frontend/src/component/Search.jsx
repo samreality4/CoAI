@@ -41,7 +41,7 @@ function Search(props) {
       <Zoom in={true}>
         <div>
           <h1 className="text-center" style={{ marginTop: "200px" }}>
-            Hi! Today is productive day!
+            Hi! Today is a productive day!
           </h1>
 
           <div
