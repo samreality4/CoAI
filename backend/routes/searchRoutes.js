@@ -52,7 +52,7 @@ module.exports = (app, Code) => {
   });
 
   app.put(`${baseUrl}/edit`, (req, res) => {
-    Code.update(
+    Code.replaceOne(
       { _id: req.body.id },
       {
         question: req.body.question,
@@ -61,7 +61,6 @@ module.exports = (app, Code) => {
         codeLanguage: req.body.codeLanguage,
         code: req.body.code
       },
-      { overwrite: true },
       err => {
         if (err) {
           console.log(err);

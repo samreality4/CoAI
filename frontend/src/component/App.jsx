@@ -9,7 +9,7 @@ import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchUser } from "../actions";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./util/ProtectedRoute";
 
 function App(props) {
   useEffect(() => {

@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { fetchData } from "../actions";
 import { resetData } from "../actions";
 import { useSnackbar } from "notistack";
-
+import { HtmlToolTips } from "./util/HtmlToolTips";
 
 function Search(props) {
   useEffect(() => {
@@ -61,13 +61,23 @@ function Search(props) {
                   />
                 </Col>
                 <Col sm={1}>
-                  <button
-                    onClick={getList}
-                    type="button"
-                    className="btn btn-danger wrn-btn"
+                  <HtmlToolTips
+                  arrow={true}
+                    title={
+                      <React.Fragment>
+                        {"Click here to Search!"} <br />
+                        {`Search keyword ${"'react'"} to try!`}
+                      </React.Fragment>
+                    }
                   >
-                    <SearchIcon />
-                  </button>
+                    <button
+                      onClick={getList}
+                      type="button"
+                      className="btn btn-danger wrn-btn"
+                    >
+                      <SearchIcon />
+                    </button>
+                  </HtmlToolTips>
                 </Col>
               </Form.Row>
             </Form>
