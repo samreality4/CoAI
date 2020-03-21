@@ -27,10 +27,9 @@ function Search(props) {
   }
 
   function onKeyDown(e) {
-    e.preventDefault();
     if (e.key === "Enter") {
+      e.preventDefault();
       getList();
-      console.log("it was pressed");
     }
   }
 
@@ -56,7 +55,7 @@ function Search(props) {
             className="container col-md-6 mx-auto rounded shadow p-3 mb-5 bg-white"
             style={{ postion: "relative", top: "20px" }}
           >
-            <Form onKeyDown={onKeyDown}>
+            <Form>
               <Form.Row className="col-sm-12">
                 <Col sm={11}>
                   <Form.Control
@@ -66,6 +65,7 @@ function Search(props) {
                     value={searchState}
                     placeholder="Enter any keywords"
                     onChange={onChange}
+                    onKeyDown={onKeyDown}
                   />
                 </Col>
                 <Col sm={1}>
