@@ -41,7 +41,7 @@ function NavBar(props) {
                 Register
               </Button>
             </Link>
-            <Link className="nav-link" to="/about">
+            <Link  to="/about" className="nav-link">
               <Button variant="contained">About Me</Button>
             </Link>
           </Nav>
