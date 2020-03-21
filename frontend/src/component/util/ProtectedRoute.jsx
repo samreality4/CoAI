@@ -1,20 +1,25 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import { fetchUser } from "../../actions";
+import { connect } from "react-redux";
 
 function ProtectedRoute({ children, authen, ...rest }) {
   return (
     <Route
       {...rest}
       render={() => {
-        switch (authen) {
-          case true:
-            return children;
-          default:
-            return <Redirect to="/login" />;
+        if (authen === true) {
+          return children;
+        } else {
+          return <Redirect to="/login" />;
         }
       }}
     />
   );
 }
 
-export default ProtectedRoute;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps, { fetchUser })(ProtectedRoute);

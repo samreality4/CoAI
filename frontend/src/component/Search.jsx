@@ -26,6 +26,14 @@ function Search(props) {
     setSearchState(e.target.value);
   }
 
+  function onKeyDown(e) {
+    e.preventDefault();
+    if (e.key === "Enter") {
+      getList();
+      console.log("it was pressed");
+    }
+  }
+
   function getList(e) {
     props.fetchData(searchState, enqueueSnackbar);
   }
@@ -48,7 +56,7 @@ function Search(props) {
             className="container col-md-6 mx-auto rounded shadow p-3 mb-5 bg-white"
             style={{ postion: "relative", top: "20px" }}
           >
-            <Form>
+            <Form onKeyDown={onKeyDown}>
               <Form.Row className="col-sm-12">
                 <Col sm={11}>
                   <Form.Control
@@ -62,7 +70,7 @@ function Search(props) {
                 </Col>
                 <Col sm={1}>
                   <HtmlToolTips
-                  arrow={true}
+                    arrow={true}
                     title={
                       <React.Fragment>
                         {"Click here to Search!"} <br />

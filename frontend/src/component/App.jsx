@@ -61,8 +61,8 @@ function App(props) {
               </div>
             )}
           />
-
-          <ProtectedRoute exact path="/main" authen={props.auth}>
+        
+          <ProtectedRoute exact path="/main" authen={props.auth}> 
             <div>
               <Search />
             </div>

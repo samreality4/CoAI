@@ -37,11 +37,7 @@ function LogIn(props) {
               <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
                 <Card.Body>
                   <Form>
-                    <Form.Group
-                      onChange={onChange}
-                      value={logInState.userName}
-                   
-                    >
+                    <Form.Group onChange={onChange} value={logInState.userName}>
                       <label>Email</label>
                       <input
                         type="email"
@@ -50,11 +46,7 @@ function LogIn(props) {
                         required
                       />
                     </Form.Group>
-                    <Form.Group
-                      onChange={onChange}
-                      value={logInState.password}
-              
-                    >
+                    <Form.Group onChange={onChange} value={logInState.password}>
                       <label>Password</label>
                       <input
                         type="password"

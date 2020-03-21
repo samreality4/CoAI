@@ -41,6 +41,7 @@ export const registerUser = (
     const res = await axios.post("/register", register);
     dispatch({ type: REGISTER_USER, payload: res.data });
     history.push("/main");
+    console.log(enqueueSnackbar);
   } catch (err) {
     errHandler(err, enqueueSnackbar);
   }
