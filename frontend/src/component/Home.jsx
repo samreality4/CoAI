@@ -2,6 +2,8 @@ import React from "react";
 import { Zoom } from "@material-ui/core";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import {Button} from "@material-ui/core";
 
 function Home(props) {
   switch (props.auth) {
@@ -19,10 +21,11 @@ function Home(props) {
               }}
             >
               <Zoom in={true}>
-                <div className="row col-md-6 text-center m-auto p-5">
+                <div className="row col-md-6 text-center m-auto p-5 justify-content-end">
                   <h1>
                     Hi! Welcome to CoAI! A helper for any coder! Use it today!
                   </h1>
+                  <Link to="/register" className="nav-link"><Button variant="outlined" color="secondary">Get Started</Button></Link>
                 </div>
               </Zoom>
             </header>
