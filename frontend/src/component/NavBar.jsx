@@ -22,9 +22,6 @@ function NavBar(props) {
                 logout
               </Button>
             </Link>
-            <Link className="nav-link" to="/about">
-              <Button variant="contained">About Me</Button>
-            </Link>
           </Nav>
         );
 
@@ -40,9 +37,6 @@ function NavBar(props) {
               <Button variant="contained" color="secondary">
                 Register
               </Button>
-            </Link>
-            <Link  to="/about" className="nav-link">
-              <Button variant="contained">About Me</Button>
             </Link>
           </Nav>
         );

@@ -32,15 +32,6 @@ function App(props) {
               </div>
             )}
           />
-          <Route
-            exact
-            path="/about"
-            render={() => (
-              <div>
-                <About />
-              </div>
-            )}
-          />
 
           <Route
             exact
