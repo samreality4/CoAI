@@ -7,8 +7,8 @@ import AddCard from "./Card/AddCard";
 import { useState } from "react";
 import Cards from "./Card/Cards";
 import { connect } from "react-redux";
-import { fetchData } from "../actions";
-import { resetData } from "../actions";
+import { fetchData } from "../redux/actions";
+import { resetData } from "../redux/actions";
 import { useSnackbar } from "notistack";
 import { HtmlToolTips } from "./util/HtmlToolTips";
 
@@ -47,12 +47,12 @@ function Search(props) {
     <div>
       <Zoom in={true}>
         <div>
-          <h1 className="text-center" style={{ marginTop: "200px" }}>
+          <h1 className="text-center mt-5">
             Hi! Today is a productive day!
           </h1>
 
           <div
-            className="container col-md-6 mx-auto rounded shadow p-3 mb-5 bg-white"
+            className="container col-md-6 col-11 mx-auto rounded shadow p-3 mb-5 bg-white"
             style={{ postion: "relative", top: "20px" }}
           >
             <Form>
@@ -81,7 +81,7 @@ function Search(props) {
                     <button
                       onClick={getList}
                       type="button"
-                      className="btn btn-danger wrn-btn"
+                      className="btn btn-danger"
                     >
                       <SearchIcon />
                     </button>
@@ -94,10 +94,10 @@ function Search(props) {
       </Zoom>
       <Cards list={props.data} grow={true} />
       <Zoom in={true}>
-        <Fab
+        <Fab className="search-fab"
           onClick={handleClick}
           color="primary"
-          style={{ position: "fixed", bottom: "50px", right: "50px" }}
+          style={{ position: "fixed", bottom: "50px", right: "40px" }}
         >
           <AddIcon />
         </Fab>

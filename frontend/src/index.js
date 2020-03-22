@@ -4,16 +4,16 @@ import App from "./component/App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import reducers from "./reducers";
+import reducers from "./redux/reducers";
 import reduxThunk from "redux-thunk";
 import { SnackbarProvider } from "notistack";
 import {ThemeProvider} from "@material-ui/core/styles";
-import GlobalMaterialUI from "./theme/GlobalMaterialUI";
+import globalMaterialUI from "./theme/globalMaterialUI";
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
-  <ThemeProvider theme={GlobalMaterialUI}>
+  <ThemeProvider theme={globalMaterialUI}>
   <SnackbarProvider maxSnack={1}>
     <Provider store={store}>
       <App />

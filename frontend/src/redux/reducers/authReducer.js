@@ -3,7 +3,7 @@ import {
   REGISTER_USER,
   FETCH_USER,
   LOGOUT_USER
-} from "../types";
+} from "../actions/types";
 
 export default function(state = {}, action) {
   switch (action.type) {

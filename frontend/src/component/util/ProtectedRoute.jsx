@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { fetchUser } from "../../actions";
+import { fetchUser } from "../../redux/actions";
 import { connect } from "react-redux";
 
 function ProtectedRoute({ children, authen, ...rest }) {

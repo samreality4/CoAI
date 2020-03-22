@@ -1,4 +1,4 @@
-import { FETCH_DATA, RESET_DATA } from "../types";
+import { FETCH_DATA, RESET_DATA } from "../actions/types";
 
 export default function(state = [], action) {
   switch (action.type) {

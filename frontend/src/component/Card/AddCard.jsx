@@ -4,7 +4,7 @@ import { Fab } from "@material-ui/core";
 import { useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { resetData } from "../../actions";
+import { resetData } from "../../redux/actions";
 
 function AddCard(props) {
   const [form, setForm] = useState({

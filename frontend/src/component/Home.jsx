@@ -16,16 +16,16 @@ function Home(props) {
             <header
               className="text-white col-sm-12"
               style={{
-                height: "19rem",
+                height: "22rem",
                 backgroundImage: `url(${"/images/banner.jpg"})`
               }}
             >
               <Zoom in={true}>
                 <div className="row col-md-6 text-center m-auto p-5 justify-content-end">
-                  <h1>
+                  <h1 className="home-head">
                     Hi! Welcome to CoAI! A helper for any coder! Use it today!
                   </h1>
-                  <Link to="/register" className="nav-link"><Button variant="outlined" color="secondary">Get Started</Button></Link>
+                  <Link to="/register" className="nav-link"><Button variant="contained" color="secondary">Get Started</Button></Link>
                 </div>
               </Zoom>
             </header>
@@ -33,7 +33,7 @@ function Home(props) {
               <div className="col-sm-12">
                 <Zoom in={true}>
                   <div className="row col-md-6 m-auto p-5">
-                    <h1>About CoAI</h1>
+                    <h1 className="home-head">About CoAI</h1>
                     <p>
                       CoAI is a collaborative helper tool for any coder out
                       there that needs some extra help. It searches solution

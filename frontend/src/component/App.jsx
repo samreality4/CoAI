@@ -4,11 +4,10 @@ import LogIn from "./LogIn";
 import Footer from "./Footer";
 import Search from "./Search";
 import Register from "./Register";
-import About from "./About";
 import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchUser } from "../actions";
+import { fetchUser } from "../redux/actions";
 import ProtectedRoute from "./util/ProtectedRoute";
 
 function App(props) {

@@ -3,7 +3,7 @@ import { Fab } from "@material-ui/core";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
 import { connect } from "react-redux";
-import { resetData } from "../../actions";
+import { resetData } from "../../redux/actions";
 
 function DeleteCard(props) {
   function handleYesClick() {

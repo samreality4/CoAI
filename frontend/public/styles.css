@@ -1,35 +1,47 @@
 h1,
 h2,
 h3,
-h4{
+h4 {
   font-family: "Montserrat";
   font-weight: bolder;
 }
 
-p, text, textarea, label, ::placeholder, .option, button {
+p,
+text,
+textarea,
+label,
+::placeholder,
+.option,
+button {
   font-family: "Courier Prime";
 }
 
 .footer {
-    position: absolute;
-    bottom:0;
-    width: 100;
-    height: 60px;
-    background-color:#393e46;
+  position: absolute;
+  bottom: 0;
+  width: 100;
+  height: 60px;
+  background-color: #393e46;
 }
 body {
-    height: 100%;
-    background-image: url('../images/cubes.png');
+  height: 100%;
+  background-image: url("../images/cubes.png");
 }
 
 @media screen and (max-width: 500px) {
-  .about {
-    font-size: .8rem;
+  .home-head {
+    font-size: 2.5rem;
   }
 }
 
-@media screen and (max-width: 400px) {
-  .about {
-    font-size: .7rem;
+@media screen and (max-width: 375px) {
+  .home-head {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .home-head {
+    font-size: 1.9rem;
   }
 }
