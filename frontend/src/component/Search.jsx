@@ -74,7 +74,7 @@ function Search(props) {
                     title={
                       <React.Fragment>
                         {"Click here to Search!"} <br />
-                        {`Search keyword ${"'react'"} to try!`}
+                        {"Search keyword \"react\" to try!"}
                       </React.Fragment>
                     }
                   >
