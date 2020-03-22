@@ -31,7 +31,7 @@ function AddCard(props) {
       .catch(function(error) {
         console.log(error);
       });
-    props.clickfunction();
+    props.handleAddClick();
     setForm({
       question: String,
       keyword: String,
@@ -42,7 +42,7 @@ function AddCard(props) {
   }
 
   return (
-    <Modal show={props.clickstate} onHide={props.clickfunction} size="lg">
+    <Modal show={props.addState} onHide={props.handleAddClick} size="lg">
       <Modal.Header closeButton>
         <Modal.Title className="header">Add a new entry</Modal.Title>
       </Modal.Header>
@@ -121,7 +121,7 @@ function AddCard(props) {
       </Modal.Body>
 
       <Modal.Footer>
-        <Fab color="secondary" onClick={props.clickfunction}>
+        <Fab color="secondary" onClick={props.handleAddClick}>
           Close
         </Fab>
       </Modal.Footer>

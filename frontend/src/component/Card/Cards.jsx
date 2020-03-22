@@ -12,7 +12,7 @@ function Cards(props) {
               id={item._id}
               codeLanguage={item.codeLanguage}
               question={item.question}
-              projecturl={item.projectUrl}
+              projectUrl={item.projectUrl}
               keyword={item.keyword}
               code={item.code}
             />

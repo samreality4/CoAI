@@ -8,12 +8,12 @@ import { resetData } from "../../redux/actions";
 
 function EditCard(props) {
   const [form, setForm] = useState({
-    id: props.cardprops.id,
-    question: props.cardprops.question,
-    keyword: props.cardprops.keyword,
-    projectUrl: props.cardprops.projecturl,
-    codeLanguage: props.cardprops.codeLanguage,
-    code: props.cardprops.code
+    id: props.cardProps.id,
+    question: props.cardProps.question,
+    keyword: props.cardProps.keyword,
+    projectUrl: props.cardProps.projectUrl,
+    codeLanguage: props.cardProps.codeLanguage,
+    code: props.cardProps.code
   });
 
   function onChange(event) {
@@ -32,12 +32,12 @@ function EditCard(props) {
       .catch(function(error) {
         console.log(error);
       });
-    props.handleclick();
-    props.extendedcardclick();
+    props.handleEditClick();
+    props.extendedCardClick();
   }
 
   return (
-    <Modal show={props.clickstate} size="lg">
+    <Modal show={props.editState} size="lg">
       <Modal.Header>
         <Modal.Title className="header">Edit Entry</Modal.Title>
       </Modal.Header>
@@ -118,7 +118,7 @@ function EditCard(props) {
       </Modal.Body>
 
       <Modal.Footer>
-        <Fab color="secondary" onClick={props.handleclick}>
+        <Fab color="secondary" onClick={props.handleEditClick}>
           Close
         </Fab>
       </Modal.Footer>

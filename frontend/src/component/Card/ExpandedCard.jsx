@@ -23,37 +23,37 @@ function ExpandedCard(props) {
   }
   return (
     <div>
-      <Modal size="xl" show={props.clickstate} onHide={props.handleclick}>
+      <Modal size="xl" show={props.clickState} onHide={props.handleClick}>
         <Modal.Header closeButton>
-          <h1>{props.cardprops.codeLanguage}</h1>
+          <h1>{props.cardProps.codeLanguage}</h1>
         </Modal.Header>
 
         <Card
-          id={props.cardprops.id}
+          id={props.cardProps.id}
           className="shadow mx-auto col-auto"
           style={{ width: "80rem" }}
         >
           <Card.Body>
             <Card.Title>Question</Card.Title>
-            <Card.Text>{props.cardprops.question}</Card.Text>
+            <Card.Text>{props.cardProps.question}</Card.Text>
             <Card.Title>Github Link</Card.Title>
             <Card.Text>
               <a
-                href={props.cardprops.projecturl}
+                href={props.cardProps.projectUrl}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                {props.cardprops.projecturl}
+                {props.cardProps.projectUrl}
               </a>
             </Card.Text>
             <Card.Title>Keywords</Card.Title>
-            <Card.Text>{props.cardprops.keyword}</Card.Text>
+            <Card.Text>{props.cardProps.keyword}</Card.Text>
             <Card.Title>Solution Code</Card.Title>
             <SyntaxHighlighter
-              language={props.cardprops.codeLanguage}
+              language={props.cardProps.codeLanguage}
               style={atomDark}
             >
-              {props.cardprops.code}
+              {props.cardProps.code}
             </SyntaxHighlighter>
           </Card.Body>
         </Card>
@@ -69,17 +69,17 @@ function ExpandedCard(props) {
       </Modal>
 
       <EditCard
-        handleclick={handleEditClick}
-        extendedcardclick={props.handleclick}
-        clickstate={editState}
-        cardprops={props.cardprops}
+        handleEditClick={handleEditClick}
+        extendedCardClick={props.handleClick}
+        editState={editState}
+        cardProps={props.cardProps}
       />
 
       <DeleteCard
-        handleclick={handleDeleteClick}
-        clickstate={deleteState}
-        id={props.cardprops.id}
-        extendedcardclick={props.handleclick}
+        handleDeleteClick={handleDeleteClick}
+        deleteState={deleteState}
+        id={props.cardProps.id}
+        extendedCardClick={props.handleClick}
       />
     </div>
   );

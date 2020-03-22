@@ -10,20 +10,20 @@ function DeleteCard(props) {
     console.log(props.id);
     axios
       .post("/api/delete", { id: props.id })
-      .then(function(response) {
+      .then(function() {
         props.resetData();
       })
       .catch(function(error) {
         console.log(error);
       });
 
-    props.handleclick();
+    props.handleDeleteClick();
 
-    props.extendedcardclick();
+    props.extendedCardClick();
   }
 
   return (
-    <Modal show={props.clickstate}>
+    <Modal show={props.deleteState}>
       <Modal.Header>
         <Modal.Title>Delete confirmation</Modal.Title>
       </Modal.Header>
@@ -33,7 +33,7 @@ function DeleteCard(props) {
       </Modal.Body>
 
       <Modal.Footer className="p-1">
-        <Fab onClick={props.handleclick} className="mr-4">
+        <Fab onClick={props.handleDeleteClick} className="mr-4">
           No
         </Fab>
         <Fab onClick={handleYesClick} color="secondary">

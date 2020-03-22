@@ -37,10 +37,10 @@ function Search(props) {
     props.fetchData(searchState, enqueueSnackbar);
   }
 
-  const [clickState, setClickState] = useState(false);
+  const [addState, setAddState] = useState(false);
 
-  function handleClick() {
-    setClickState(!clickState);
+  function handleAddClick() {
+    setAddState(!addState);
   }
 
   return (
@@ -95,7 +95,7 @@ function Search(props) {
       <Cards list={props.data} grow={true} />
       <Zoom in={true}>
         <Fab className="search-fab"
-          onClick={handleClick}
+          onClick={handleAddClick}
           color="primary"
           style={{ position: "fixed", bottom: "50px", right: "40px" }}
         >
@@ -103,7 +103,7 @@ function Search(props) {
         </Fab>
       </Zoom>
 
-      <AddCard clickstate={clickState} clickfunction={handleClick} />
+      <AddCard addState={addState} handleAddClick={handleAddClick} />
     </div>
   );
 }

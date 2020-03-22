@@ -28,11 +28,11 @@ function OneCard(props) {
               <Card.Text>{props.question}</Card.Text>
               <Card.Text>
                 <a
-                  href={props.projecturl}
+                  href={props.projectUrl}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {props.projecturl}
+                  {props.projectUrl}
                 </a>
               </Card.Text>
             </Card.Body>
@@ -40,9 +40,9 @@ function OneCard(props) {
         </CardActionArea>
       </Grow>
       <ExpandedCard
-        clickstate={clickState}
-        cardprops={props}
-        handleclick={handleClick}
+        clickState={clickState}
+        cardProps={props}
+        handleClick={handleClick}
       />
     </div>
   );

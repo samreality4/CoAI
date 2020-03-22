@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import Header from "./Header";
 import LogIn from "./LogIn";
 import Footer from "./Footer";
@@ -11,6 +11,7 @@ import { fetchUser } from "../redux/actions";
 import ProtectedRoute from "./util/ProtectedRoute";
 
 function App(props) {
+
   useEffect(() => {
     props.fetchUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
