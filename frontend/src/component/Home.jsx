@@ -11,7 +11,7 @@ function Home(props) {
       return <Redirect to="/main" />;
     default:
       return (
-        <div className="container mw-100">
+        <div className="container-fluid">
           <div className="row">
             <header
               className="text-white col-sm-12"

@@ -16,9 +16,7 @@ function DeleteCard(props) {
       .catch(function(error) {
         console.log(error);
       });
-
     props.handleDeleteClick();
-
     props.extendedCardClick();
   }
 
