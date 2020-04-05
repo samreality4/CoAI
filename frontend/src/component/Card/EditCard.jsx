@@ -26,10 +26,10 @@ function EditCard(props) {
   function onSave() {
     axios
       .put("/api/edit", form)
-      .then(function(response) {
+      .then(() => {
         props.resetData();
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.log(error);
       });
     props.handleEditClick();

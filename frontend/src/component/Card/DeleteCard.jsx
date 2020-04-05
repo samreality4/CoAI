@@ -10,10 +10,10 @@ function DeleteCard(props) {
     console.log(props.id);
     axios
       .post("/api/delete", { id: props.id })
-      .then(function() {
+      .then(() => {
         props.resetData();
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.log(error);
       });
     props.handleDeleteClick();

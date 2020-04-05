@@ -12,12 +12,12 @@ function AddCard(props) {
     keyword: String,
     projectUrl: String,
     codeLanguage: String,
-    code: String
+    code: String,
   });
 
   function onChange(event) {
     const { name, value } = event.target;
-    setForm(preVal => {
+    setForm((preVal) => {
       return { ...preVal, [name]: value };
     });
   }
@@ -25,10 +25,10 @@ function AddCard(props) {
   function onSubmit() {
     axios
       .post("/api/add", form)
-      .then(function(response) {
+      .then(() => {
         props.resetData();
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.log(error);
       });
     props.handleAddClick();
@@ -37,7 +37,7 @@ function AddCard(props) {
       keyword: String,
       projectUrl: String,
       codeLanguage: String,
-      code: String
+      code: String,
     });
   }
 
