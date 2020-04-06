@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {Button} from "@material-ui/core";
+import ParticleComponent from "./util/ParticleComponent";
+
 
 function Home(props) {
   switch (props.auth) {
@@ -13,14 +15,14 @@ function Home(props) {
       return (
         <div className="container-fluid">
           <div className="row">
-            <header
-              className="text-white col-sm-12"
+            <header   className="text-white col-sm-12"
               style={{
                 height: "22rem",
                 backgroundImage: `url(${"/images/banner.jpg"})`
-              }}
-            >
-              <Zoom in={true}>
+              }}>
+         
+          <ParticleComponent/>
+            <Zoom in={true}>
                 <div className="row col-md-6 text-center m-auto p-5 justify-content-end">
                   <h1 className="home-head">
                     Hi! Welcome to CoAI! A helper for any coder! Use it today!
@@ -28,6 +30,7 @@ function Home(props) {
                   <Link to="/register" className="nav-link"><Button variant="contained" color="secondary">Get Started</Button></Link>
                 </div>
               </Zoom>
+            
             </header>
             <div>
               <div className="col-sm-12">
