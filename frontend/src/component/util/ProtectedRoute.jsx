@@ -4,6 +4,7 @@ import { fetchUser } from "../../redux/actions";
 import { connect } from "react-redux";
 
 function ProtectedRoute({ children, authen, ...rest }) {
+  
   return (
     <Route
       {...rest}

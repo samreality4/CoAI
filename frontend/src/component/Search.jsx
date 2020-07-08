@@ -11,12 +11,24 @@ import { fetchData } from "../redux/actions";
 import { resetData } from "../redux/actions";
 import { useSnackbar } from "notistack";
 import { HtmlToolTips } from "./util/HtmlToolTips";
+import { useHistory } from "react-router-dom";
 
 function Search(props) {
+  let history = useHistory();
+
   useEffect(() => {
     props.resetData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      if (props.auth === true) {
+        if (history.action === "POP") {
+          history.push("/main");
+        }
+      }
+    };
   }, []);
+
+  console.log("what is" + props.history);
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -47,9 +59,7 @@ function Search(props) {
     <div>
       <Zoom in={true}>
         <div>
-          <h1 className="text-center mt-5">
-            Hi! Today is a productive day!
-          </h1>
+          <h1 className="text-center mt-5">Hi! Today is a productive day!</h1>
 
           <div
             className="container col-md-6 col-11 mx-auto rounded shadow p-3 mb-5 bg-white"
@@ -74,7 +84,7 @@ function Search(props) {
                     title={
                       <React.Fragment>
                         {"Click here to Search!"} <br />
-                        {"Search keyword \"react\" to try!"}
+                        {'Search keyword "react" to try!'}
                       </React.Fragment>
                     }
                   >
@@ -94,7 +104,8 @@ function Search(props) {
       </Zoom>
       <Cards list={props.data} grow={true} />
       <Zoom in={true}>
-        <Fab className="search-fab"
+        <Fab
+          className="search-fab"
           onClick={handleAddClick}
           color="primary"
           style={{ position: "fixed", bottom: "50px", right: "40px" }}
@@ -108,8 +119,8 @@ function Search(props) {
   );
 }
 
-function mapStateToProps({ data }) {
-  return { data };
+function mapStateToProps({ data, auth }) {
+  return { data, auth };
 }
 
 export default connect(mapStateToProps, { fetchData, resetData })(Search);
