@@ -12,25 +12,29 @@ module.exports = (app, User) => {
   });
 
   app.post("/register", (req, res) => {
-    User.register({ username: req.body.username }, req.body.password, err => {
-      if (err) {
-        console.log(err);
-        res.status(HttpStatus.BAD_REQUEST).json("User already exist");
-      } else {
-        passport.authenticate("local")(req, res, () => {
-          res.send(true);
-        });
+    User.register(
+      { username: req.body.username, date: req.body.date },
+      req.body.password,
+      (err) => {
+        if (err) {
+          console.log(err);
+          res.status(HttpStatus.BAD_REQUEST).json("User already exist");
+        } else {
+          passport.authenticate("local")(req, res, () => {
+            res.send(true);
+          });
+        }
       }
-    });
+    );
   });
 
   app.post("/login", (req, res) => {
     const user = new User({
       username: req.body.username,
-      password: req.body.password
+      password: req.body.password,
     });
 
-    req.login(user, err => {
+    req.login(user, (err) => {
       if (err) {
         console.log(err);
         res

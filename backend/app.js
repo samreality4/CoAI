@@ -52,6 +52,7 @@ conn2.once("open", () => {
 const userSchema = new mongoose.Schema({
   email: String,
   password: String,
+  date: String,
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -79,6 +80,7 @@ const codeSchema = new mongoose.Schema({
   keyword: String,
   codeLanguage: String,
   code: String,
+  date: String,
 });
 
 codeSchema.index({
