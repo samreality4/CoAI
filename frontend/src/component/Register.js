@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Zoom, Fab } from "@material-ui/core";
-import { Form } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
+import { Form, Card } from "react-bootstrap";
 import { connect } from "react-redux";
 import { registerUser } from "../redux/actions";
 import { withRouter } from "react-router-dom";
@@ -11,9 +10,10 @@ function Register(props) {
   const { enqueueSnackbar } = useSnackbar();
 
   const [registerState, setRegisterState] = useState({
-    userName: String,
+    username: String,
     password: String,
-    passwordConfirm: String
+    passwordConfirm: String,
+    date: String(new Date())
   });
 
   function onChange(event) {

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Zoom, Fab } from "@material-ui/core";
-import { Form } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
+import { Form, Card } from "react-bootstrap";
 import { connect } from "react-redux";
 import { logInUser } from "../redux/actions";
 import { withRouter } from "react-router-dom";

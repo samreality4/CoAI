@@ -1,11 +1,9 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
-import { Modal } from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Modal } from "react-bootstrap";
 import { Fab } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import EditCard from "./EditCard";
-import { useState } from "react";
 import DeleteCard from "./DeleteCard";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";

@@ -1,7 +1,6 @@
-import React from "react";
-import { Modal, Container, Form, Col } from "react-bootstrap";
+import React, {useState} from "react";
+import { Modal, Container, Form} from "react-bootstrap";
 import { Fab } from "@material-ui/core";
-import { useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { resetData } from "../../redux/actions";
@@ -13,6 +12,7 @@ function AddCard(props) {
     projectUrl: String,
     codeLanguage: String,
     code: String,
+    date: String(new Date()),
   });
 
   function onChange(event) {
@@ -38,6 +38,7 @@ function AddCard(props) {
       projectUrl: String,
       codeLanguage: String,
       code: String,
+      date: String(new Date())
     });
   }
 
@@ -48,8 +49,8 @@ function AddCard(props) {
       </Modal.Header>
       <Modal.Body>
         <Container>
-          <Form action="/" method="post">
-            <Form.Group controlId="formGridIssue">
+          <Form>
+            <Form.Group>
               <Form.Label>What was the issue?</Form.Label>
               <Form.Control
                 onChange={onChange}
@@ -59,7 +60,7 @@ function AddCard(props) {
               />
             </Form.Group>
 
-            <Form.Group controlId="formGridIssue">
+            <Form.Group>
               <Form.Label>Keywords</Form.Label>
               <Form.Control
                 onChange={onChange}
@@ -70,7 +71,7 @@ function AddCard(props) {
             </Form.Group>
 
             <Form.Row>
-              <Form.Group as={Col} controlId="formGridUrl">
+              <Form.Group className="col-6">
                 <Form.Label>Project Url</Form.Label>
                 <Form.Control
                   onChange={onChange}
@@ -80,7 +81,7 @@ function AddCard(props) {
                   placeholder="Enter github url"
                 />
               </Form.Group>
-              <Form.Group as={Col} controlId="formGridLanguage">
+              <Form.Group className="col-6">
                 <Form.Label>Language</Form.Label>
                 <Form.Control
                   onChange={onChange}
@@ -101,7 +102,7 @@ function AddCard(props) {
               </Form.Group>
             </Form.Row>
 
-            <Form.Group controlId="formGridCode">
+            <Form.Group>
               <Form.Label>Code</Form.Label>
               <Form.Control
                 onChange={onChange}

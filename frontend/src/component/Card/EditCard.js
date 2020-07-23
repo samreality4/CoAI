@@ -44,8 +44,8 @@ function EditCard(props) {
 
       <Modal.Body>
         <Container>
-          <Form action="/" method="post">
-            <Form.Group controlId="formGridIssue">
+          <Form>
+            <Form.Group>
               <Form.Label>What was the issue?</Form.Label>
               <Form.Control
                 onChange={onChange}
@@ -55,7 +55,7 @@ function EditCard(props) {
               />
             </Form.Group>
 
-            <Form.Group controlId="formGridIssue">
+            <Form.Group>
               <Form.Label>Keywords</Form.Label>
               <Form.Control
                 onChange={onChange}
@@ -66,7 +66,7 @@ function EditCard(props) {
             </Form.Group>
 
             <Form.Row>
-              <Form.Group as={Col} controlId="formGridUrl">
+              <Form.Group className="col-6">
                 <Form.Label>Project Url</Form.Label>
                 <Form.Control
                   onChange={onChange}
@@ -77,7 +77,7 @@ function EditCard(props) {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridLanguage">
+              <Form.Group className="col-6">
                 <Form.Label>Language</Form.Label>
                 <Form.Control
                   onChange={onChange}
@@ -98,7 +98,7 @@ function EditCard(props) {
               </Form.Group>
             </Form.Row>
 
-            <Form.Group controlId="formGridCode">
+            <Form.Group>
               <Form.Label>Code</Form.Label>
               <Form.Control
                 onChange={onChange}

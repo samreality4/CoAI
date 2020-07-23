@@ -1,11 +1,10 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import { Link } from "react-router-dom";
+import {Nav, Navbar} from "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { logOutUser } from "../redux/actions";
-import { withRouter } from "react-router-dom";
+
 
 function NavBar(props) {
   function onLogOut() {

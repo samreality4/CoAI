@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
 import { Zoom, Fab } from "@material-ui/core";
 import { Form, Col } from "react-bootstrap";
 import AddCard from "./Card/AddCard";
-import { useState } from "react";
 import Cards from "./Card/Cards";
 import { connect } from "react-redux";
 import { fetchData } from "../redux/actions";

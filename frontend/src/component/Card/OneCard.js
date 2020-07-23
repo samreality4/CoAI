@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { CardActionArea } from "@material-ui/core";
 import ExpandedCard from "./ExpandedCard";
-import { useState } from "react";
 import Grow from "@material-ui/core/Grow";
 
 function OneCard(props) {
@@ -14,7 +13,7 @@ function OneCard(props) {
 
   return (
     <div>
-      <Grow in={true} timeout={{appear: 1000, enter: 1000, exit: 1000}}>
+      <Grow in={true} timeout={{ appear: 1000, enter: 1000, exit: 1000 }}>
         <CardActionArea onClick={handleClick}>
           <Card
             key={props.id}
