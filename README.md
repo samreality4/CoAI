@@ -1,6 +1,6 @@
 # CoAI
 
-CoAI is an SPA that stores previously solved coding problem that can be viewed and searched.
+CoAI is an SPA that stores previously solved coding problems that can be viewed and searched.
 
 # How To Use
 
