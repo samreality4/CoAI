@@ -2,7 +2,7 @@ import React from "react";
 import { Zoom, Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import ParticleComponent from "./util/ParticleComponent";
+import ParticleComponent from "../component/util/ParticleComponent";
 
 
 function Home(props) {

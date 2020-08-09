@@ -3,13 +3,13 @@ import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
 import { Zoom, Fab } from "@material-ui/core";
 import { Form, Col } from "react-bootstrap";
-import AddCard from "./Card/AddCard";
-import Cards from "./Card/Cards";
+import AddCard from "../component/Card/AddCard";
+import Cards from "../component/Card/Cards";
 import { connect } from "react-redux";
 import { fetchData } from "../redux/actions";
 import { resetData } from "../redux/actions";
 import { useSnackbar } from "notistack";
-import { HtmlToolTips } from "./util/HtmlToolTips";
+import { HtmlToolTips } from "../component/util/HtmlToolTips";
 import { useHistory } from "react-router-dom";
 
 function Search(props) {

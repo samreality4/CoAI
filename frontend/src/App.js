@@ -1,14 +1,14 @@
 import React, { useEffect} from "react";
-import Header from "./Header";
-import LogIn from "./LogIn";
-import Footer from "./Footer";
-import Search from "./Search";
-import Register from "./Register";
-import Home from "./Home";
+import Header from "./component/Header";
+import LogIn from "./page/LogIn";
+import Footer from "./component/Footer";
+import Search from "./page/Search";
+import Register from "./page/Register";
+import Home from "./page/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchUser } from "../redux/actions";
-import ProtectedRoute from "./util/ProtectedRoute";
+import { fetchUser } from "./redux/actions";
+import ProtectedRoute from "./component/util/ProtectedRoute";
 
 function App(props) {
 
