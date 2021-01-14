@@ -5,7 +5,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { resetData } from "../../redux/actions";
 
-function AddCard(props) {
+function AddCard({handleAddClick, addState, resetData}) {
   const [form, setForm] = useState({
     question: String,
     keyword: String,
@@ -26,12 +26,12 @@ function AddCard(props) {
     axios
       .post("/api/add", form)
       .then(() => {
-        props.resetData();
+        resetData();
       })
       .catch((error) => {
         console.log(error);
       });
-    props.handleAddClick();
+    handleAddClick();
     setForm({
       question: String,
       keyword: String,
@@ -43,7 +43,7 @@ function AddCard(props) {
   }
 
   return (
-    <Modal show={props.addState} onHide={props.handleAddClick} size="lg">
+    <Modal show={addState} onHide={handleAddClick} size="lg">
       <Modal.Header closeButton>
         <Modal.Title className="header">Add a new entry</Modal.Title>
       </Modal.Header>
@@ -122,7 +122,7 @@ function AddCard(props) {
       </Modal.Body>
 
       <Modal.Footer>
-        <Fab color="secondary" onClick={props.handleAddClick}>
+        <Fab color="secondary" onClick={handleAddClick}>
           Close
         </Fab>
       </Modal.Footer>

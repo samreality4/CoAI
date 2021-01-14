@@ -8,9 +8,10 @@ import DeleteCard from "./DeleteCard";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-function ExpandedCard(props) {
+function ExpandedCard({clickState, handleClick, cardProps}) {
   const [editState, setEditState] = useState(false);
   const [deleteState, setDeleteState] = useState(false);
+  const {id, question, keyword, projectUrl, codeLanguage, code} = cardProps;
 
   function handleEditClick() {
     setEditState(!editState);
@@ -21,37 +22,37 @@ function ExpandedCard(props) {
   }
   return (
     <div>
-      <Modal size="xl" show={props.clickState} onHide={props.handleClick}>
+      <Modal size="xl" show={clickState} onHide={handleClick}>
         <Modal.Header closeButton>
-          <h1>{props.cardProps.codeLanguage}</h1>
+          <h1>{codeLanguage}</h1>
         </Modal.Header>
 
         <Card
-          id={props.cardProps.id}
+          id={id}
           className="shadow mx-auto col-auto"
           style={{ width: "80rem" }}
         >
           <Card.Body>
             <Card.Title>Question</Card.Title>
-            <Card.Text>{props.cardProps.question}</Card.Text>
+            <Card.Text>{question}</Card.Text>
             <Card.Title>Github Link</Card.Title>
             <Card.Text>
               <a
-                href={props.cardProps.projectUrl}
+                href={projectUrl}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                {props.cardProps.projectUrl}
+                {projectUrl}
               </a>
             </Card.Text>
             <Card.Title>Keywords</Card.Title>
-            <Card.Text>{props.cardProps.keyword}</Card.Text>
+            <Card.Text>{keyword}</Card.Text>
             <Card.Title>Solution Code</Card.Title>
             <SyntaxHighlighter
-              language={props.cardProps.codeLanguage}
+              language={codeLanguage}
               style={atomDark}
             >
-              {props.cardProps.code}
+              {code}
             </SyntaxHighlighter>
           </Card.Body>
         </Card>
@@ -68,16 +69,16 @@ function ExpandedCard(props) {
 
       <EditCard
         handleEditClick={handleEditClick}
-        extendedCardClick={props.handleClick}
+        extendedCardClick={handleClick}
         editState={editState}
-        cardProps={props.cardProps}
+        cardProps={cardProps}
       />
 
       <DeleteCard
         handleDeleteClick={handleDeleteClick}
         deleteState={deleteState}
-        id={props.cardProps.id}
-        extendedCardClick={props.handleClick}
+        id={id}
+        extendedCardClick={handleClick}
       />
     </div>
   );

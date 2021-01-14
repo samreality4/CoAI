@@ -5,8 +5,8 @@ import { Redirect, Link } from "react-router-dom";
 import ParticleComponent from "../component/util/ParticleComponent";
 
 
-function Home(props) {
-  switch (props.auth) {
+function Home({auth}) {
+  switch (auth) {
     case true:
       return <Redirect to="/main" />;
     default:

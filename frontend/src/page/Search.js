@@ -12,22 +12,20 @@ import { useSnackbar } from "notistack";
 import { HtmlToolTips } from "../component/util/HtmlToolTips";
 import { useHistory } from "react-router-dom";
 
-function Search(props) {
+function Search({resetData, auth, fetchData, data}) {
   let history = useHistory();
 
   useEffect(() => {
-    props.resetData();
+    resetData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     return () => {
-      if (props.auth === true) {
+      if (auth === true) {
         if (history.action === "POP") {
           history.push("/main");
         }
       }
     };
   }, []);
-
-  console.log("what is" + props.history);
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -45,7 +43,7 @@ function Search(props) {
   }
 
   function getList(e) {
-    props.fetchData(searchState, enqueueSnackbar);
+    fetchData(searchState, enqueueSnackbar);
   }
 
   const [addState, setAddState] = useState(false);
@@ -101,7 +99,7 @@ function Search(props) {
           </div>
         </div>
       </Zoom>
-      <Cards list={props.data} grow={true} />
+      <Cards list={data} grow={true} />
       <Zoom in={true}>
         <Fab
           className="search-fab"

@@ -6,7 +6,7 @@ import { logInUser } from "../redux/actions";
 import { withRouter } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
-function LogIn(props) {
+function LogIn({logInUser, history}) {
   const { enqueueSnackbar } = useSnackbar();
 
   const [logInState, setLogInState] = useState({
@@ -22,7 +22,7 @@ function LogIn(props) {
   }
 
   function onLogin() {
-    props.logInUser(logInState, props.history, enqueueSnackbar);
+    logInUser(logInState, history, enqueueSnackbar);
   }
 
   return (

@@ -1,20 +1,20 @@
 import React from "react";
 import OneCard from "./OneCard";
 
-function Cards(props) {
+function Cards({list}) {
   return (
     <div className="container mx-auto">
       <div className="d-flex row justify-content-start">
-        {props.list.map(item => {
+        {list.map(({_id, codeLanguage, question, projectUrl, keyword, code}) => {
           return (
             <OneCard
-              key={item._id}
-              id={item._id}
-              codeLanguage={item.codeLanguage}
-              question={item.question}
-              projectUrl={item.projectUrl}
-              keyword={item.keyword}
-              code={item.code}
+              key={_id}
+              id={_id}
+              codeLanguage={codeLanguage}
+              question={question}
+              projectUrl={projectUrl}
+              keyword={keyword}
+              code={code}
             />
           );
         })}

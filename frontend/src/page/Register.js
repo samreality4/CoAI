@@ -6,7 +6,7 @@ import { registerUser } from "../redux/actions";
 import { withRouter } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
-function Register(props) {
+function Register({registerUser, history}) {
   const { enqueueSnackbar } = useSnackbar();
 
   const [registerState, setRegisterState] = useState({
@@ -25,7 +25,7 @@ function Register(props) {
 
   function onRegister() {
     if (registerState.password === registerState.passwordConfirm) {
-      props.registerUser(registerState, props.history, enqueueSnackbar);
+      registerUser(registerState, history, enqueueSnackbar);
     } else {
       enqueueSnackbar("Password does not match!", { variant: "error" });
     }

@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import Header from "./component/Header";
 import LogIn from "./page/LogIn";
 import Footer from "./component/Footer";
@@ -10,10 +10,9 @@ import { connect } from "react-redux";
 import { fetchUser } from "./redux/actions";
 import ProtectedRoute from "./component/util/ProtectedRoute";
 
-function App(props) {
-
+function App({fetchUser, auth}) {
   useEffect(() => {
-    props.fetchUser();
+    fetchUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -52,8 +51,8 @@ function App(props) {
               </div>
             )}
           />
-        
-          <ProtectedRoute exact path="/main" authen={props.auth}> 
+
+          <ProtectedRoute exact path="/main" authen={auth}>
             <div>
               <Search />
             </div>

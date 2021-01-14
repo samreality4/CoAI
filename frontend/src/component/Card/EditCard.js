@@ -6,14 +6,15 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { resetData } from "../../redux/actions";
 
-function EditCard(props) {
+function EditCard({cardProps, resetData, handleEditClick, extendedCardClick, editState}) {
+  const {id, question, keyword, projectUrl, codeLanguage, code} = cardProps;
   const [form, setForm] = useState({
-    id: props.cardProps.id,
-    question: props.cardProps.question,
-    keyword: props.cardProps.keyword,
-    projectUrl: props.cardProps.projectUrl,
-    codeLanguage: props.cardProps.codeLanguage,
-    code: props.cardProps.code
+    id: id,
+    question: question,
+    keyword: keyword,
+    projectUrl: projectUrl,
+    codeLanguage: codeLanguage,
+    code: code
   });
 
   function onChange(event) {
@@ -27,17 +28,17 @@ function EditCard(props) {
     axios
       .put("/api/edit", form)
       .then(() => {
-        props.resetData();
+        resetData();
       })
       .catch((error) => {
         console.log(error);
       });
-    props.handleEditClick();
-    props.extendedCardClick();
+    handleEditClick();
+    extendedCardClick();
   }
 
   return (
-    <Modal show={props.editState} size="lg">
+    <Modal show={editState} size="lg">
       <Modal.Header>
         <Modal.Title className="header">Edit Entry</Modal.Title>
       </Modal.Header>
@@ -118,7 +119,7 @@ function EditCard(props) {
       </Modal.Body>
 
       <Modal.Footer>
-        <Fab color="secondary" onClick={props.handleEditClick}>
+        <Fab color="secondary" onClick={handleEditClick}>
           Close
         </Fab>
       </Modal.Footer>

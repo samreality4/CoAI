@@ -5,23 +5,28 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { resetData } from "../../redux/actions";
 
-function DeleteCard(props) {
+function DeleteCard({
+  id,
+  resetData,
+  handleDeleteClick,
+  extendedCardClick,
+  deleteState,
+}) {
   function handleYesClick() {
-    console.log(props.id);
     axios
-      .post("/api/delete", { id: props.id })
+      .post("/api/delete", { id: id })
       .then(() => {
-        props.resetData();
+        resetData();
       })
       .catch((error) => {
         console.log(error);
       });
-    props.handleDeleteClick();
-    props.extendedCardClick();
+    handleDeleteClick();
+    extendedCardClick();
   }
 
   return (
-    <Modal show={props.deleteState}>
+    <Modal show={deleteState}>
       <Modal.Header>
         <Modal.Title>Delete confirmation</Modal.Title>
       </Modal.Header>
@@ -31,7 +36,7 @@ function DeleteCard(props) {
       </Modal.Body>
 
       <Modal.Footer className="p-1">
-        <Fab onClick={props.handleDeleteClick} className="mr-4">
+        <Fab onClick={handleDeleteClick} className="mr-4">
           No
         </Fab>
         <Fab onClick={handleYesClick} color="secondary">
@@ -45,4 +50,4 @@ function mapStateToProps({ data }) {
   return { data };
 }
 
-export default connect(mapStateToProps, { resetData })(DeleteCard);
+export default connect(mapStateToProps, {resetData} )(DeleteCard);

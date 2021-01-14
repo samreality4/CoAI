@@ -5,6 +5,7 @@ module.exports = (app, User) => {
   app.get("/current_user", (req, res) => {
     if (req.isAuthenticated()) {
       res.send(true);
+      console.log(req.body)
     } else {
       res.send(false);
       console.log("not logged in!");

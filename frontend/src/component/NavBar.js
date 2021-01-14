@@ -6,13 +6,13 @@ import { connect } from "react-redux";
 import { logOutUser } from "../redux/actions";
 
 
-function NavBar(props) {
+function NavBar({logOutUser, history, auth}) {
   function onLogOut() {
-    props.logOutUser(props.history);
+    logOutUser(history);
   }
   
   function renderContent() {
-    switch (props.auth) {
+    switch (auth) {
       case true:
         return (
           <Nav>

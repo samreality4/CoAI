@@ -93,9 +93,9 @@ codeSchema.index({
 
 const Code = conn2.model("Code", codeSchema);
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
 
 require("./routes/searchRoutes")(app, Code);
 require("./routes/authRoutes")(app, User);
