@@ -3,11 +3,15 @@ import { Nav, Navbar } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
-import { logOutUser, setSideBarState } from "../redux/actions";
+import { logOutUser, setMenuBarState } from "../redux/actions";
 
-function NavBar({ logOutUser, setSideBarState, history, auth, misc }) {
+function NavBar({ logOutUser, setMenuBarState, history, auth, misc }) {
   function onLogOut() {
     logOutUser(history);
+  }
+
+  function onLogoClick(){
+    setMenuBarState(!misc);
   }
 
   function renderContent() {
@@ -44,7 +48,7 @@ function NavBar({ logOutUser, setSideBarState, history, auth, misc }) {
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand>
-        <button onClick={() => setSideBarState(!misc)}>
+        <button onClick={onLogoClick}>
           <img
             alt=""
             src="/images/SXG.png"
@@ -69,5 +73,5 @@ function mapStateToProps({ auth, misc }) {
 }
 
 export default withRouter(
-  connect(mapStateToProps, { logOutUser, setSideBarState })(NavBar)
+  connect(mapStateToProps, { logOutUser, setMenuBarState })(NavBar)
 );
