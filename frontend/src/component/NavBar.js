@@ -1,16 +1,15 @@
 import React from "react";
-import {Nav, Navbar} from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
-import { logOutUser } from "../redux/actions";
+import { logOutUser, setSideBarState } from "../redux/actions";
 
-
-function NavBar({logOutUser, history, auth}) {
+function NavBar({ logOutUser, setSideBarState, history, auth, misc }) {
   function onLogOut() {
     logOutUser(history);
   }
-  
+
   function renderContent() {
     switch (auth) {
       case true:
@@ -44,8 +43,8 @@ function NavBar({logOutUser, history, auth}) {
 
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Link to="/">
-        <Navbar.Brand>
+      <Navbar.Brand>
+        <button onClick={() => setSideBarState(!misc)}>
           <img
             alt=""
             src="/images/SXG.png"
@@ -54,8 +53,9 @@ function NavBar({logOutUser, history, auth}) {
             className="d-inline-block align-top"
           />
           CoAI
-        </Navbar.Brand>
-      </Link>
+        </button>
+      </Navbar.Brand>
+
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ml-auto">{renderContent()}</Nav>
@@ -64,8 +64,10 @@ function NavBar({logOutUser, history, auth}) {
   );
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ auth, misc }) {
+  return { auth, misc };
 }
 
-export default withRouter(connect(mapStateToProps, { logOutUser })(NavBar));
+export default withRouter(
+  connect(mapStateToProps, { logOutUser, setSideBarState })(NavBar)
+);

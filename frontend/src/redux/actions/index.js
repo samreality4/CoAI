@@ -5,7 +5,8 @@ import {
   FETCH_USER,
   LOGOUT_USER,
   FETCH_DATA,
-  RESET_DATA
+  RESET_DATA,
+  SET_SIDEBAR_STATE
 } from "./types";
 
 export const fetchUser = () => async dispatch => {
@@ -78,3 +79,7 @@ function errHandler(err, enqueueSnackbar) {
     enqueueSnackbar(err.response.data, { variant: "error" });
   }
 }
+
+export const setSideBarState = (state) => async dispatch => {
+ dispatch({type: SET_SIDEBAR_STATE, payload: state })
+};
