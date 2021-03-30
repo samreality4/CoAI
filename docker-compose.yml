@@ -1,0 +1,20 @@
+#version of docker
+version: "3"
+services:
+  server:
+    container_name: backend
+    restart: always
+    #where we are building from
+    build: ./backend
+    ports: 
+      - "4000:4000"
+  
+  client:
+    container_name: frontend
+    restart: always
+    #where we are building from
+    build: ./frontend
+    ports: 
+      - "3000:3000"
+    links:
+      - server
