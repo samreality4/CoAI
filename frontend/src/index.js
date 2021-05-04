@@ -8,7 +8,7 @@ import reducers from "./redux/reducers";
 import reduxThunk from "redux-thunk";
 import { SnackbarProvider } from "notistack";
 import {ThemeProvider} from "@material-ui/core/styles";
-import globalMaterialUI from "./theme/globalMaterialUI";
+import globalMaterialUI from "./theme/GlobalMaterialUI";
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 

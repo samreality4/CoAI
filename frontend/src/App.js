@@ -20,7 +20,6 @@ function App({fetchUser, auth}) {
     <Router>
       <div>
         <Header />
-
         <Switch>
           <Route
             exact
