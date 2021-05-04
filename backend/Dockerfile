@@ -1,16 +1,27 @@
 #from the node server
 FROM node
 
-#create directory
+#set up environment variables if you want
+#ENV MONGO_KEY1=
+#ENV MONGO_KEY2=
+
+#create folder called server
 WORKDIR /server
 
-#copy all package.json "to" the server folder we created
-COPY package*.json ./server/
+#copy all package.json and package-lock.json "to" the server folder we created in WORKDIR
+COPY package*.json .
 
 #run the npm install
 RUN npm install
 
-COPY . /server/
+#copy everything where this Dockerfile is at to the server folder that we have created in WORKDIR
+COPY . .
 
+#show on localhost 4000
 EXPOSE 4000
-CMD ["node". "app.js"]
+#Run the commonad node app.js
+CMD [ "node", "app.js" ]
+
+
+#helpful commands
+#docker run -it coai_backend sh

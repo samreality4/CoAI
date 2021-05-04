@@ -1,20 +1,27 @@
 #version of docker
 version: "3"
 services:
-  server:
-    container_name: backend
-    restart: always
-    #where we are building from
-    build: ./backend
-    ports: 
-      - "4000:4000"
-  
-  client:
+  #name of the container
+  frontend:
     container_name: frontend
     restart: always
-    #where we are building from
+    #where to find the instruction to build
     build: ./frontend
     ports: 
       - "3000:3000"
     links:
-      - server
+      - backend
+
+  #name of the container
+  backend:
+    container_name: backend
+    #attach the env file that you don't want to upload to github
+    env_file:
+        - ./backend/.env
+    restart: always
+    #where to find the instruction to build
+    build: ./backend
+    ports: 
+      - "4000:4000"
+  
+ 

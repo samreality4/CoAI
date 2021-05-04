@@ -10,7 +10,7 @@ function NavBar({ logOutUser, setMenuBarState, history, auth, misc }) {
     logOutUser(history);
   }
 
-  function onLogoClick(){
+  function onLogoClick() {
     setMenuBarState(!misc);
   }
 
@@ -48,16 +48,14 @@ function NavBar({ logOutUser, setMenuBarState, history, auth, misc }) {
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand>
-        <button onClick={onLogoClick}>
-          <img
-            alt=""
-            src="/images/SXG.png"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />
-          CoAI
-        </button>
+        <img
+          alt=""
+          src="/images/SXG.png"
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />
+        CoAI
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
