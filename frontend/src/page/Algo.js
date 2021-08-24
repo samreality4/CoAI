@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 
+//add videos and links for the specific algorithm.
 function Algo({auth}) {
     switch (auth) {
       case false:
